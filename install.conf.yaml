@@ -1,0 +1,29 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- shell:
+    - mkdir -p ~/.config
+
+- link:
+    # shell
+    ~/.bashrc: shell/bashrc
+    ~/.zshrc: shell/zshrc
+    ~/.oh-my-zsh: shell/oh-my-zsh
+
+    # nvim
+    ~/.config/nvim:
+      force: true
+      create: true
+      path: nvim
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    -
+      command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      description: Installing oh-my-zsh
+      stdout: true
+      stderr: true
