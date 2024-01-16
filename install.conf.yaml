@@ -11,6 +11,12 @@
 - shell:
     - mkdir -p ~/.config
     - [git submodule update --init --recursive, Installing submodules]
+    -
+      command: sudo dnf install zsh -y
+      description: Installing zsh
+    -
+      command: chsh -s $(which zsh)
+      description: Changing default shell to zsh
 
 - link:
     # shell
@@ -26,9 +32,3 @@
       create: true
       path: nvim
 
-# - shell:
-#     -
-#       command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#       description: Installing oh-my-zsh
-#     -
-      # command: 
