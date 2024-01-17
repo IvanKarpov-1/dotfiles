@@ -6,16 +6,14 @@
       stdout: true
       stderr: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - shell:
     - mkdir -p ~/.config
     - [git submodule update --init --recursive, Installing submodules]
-    -
-      command: sudo dnf install zsh -y
+    - command: sudo dnf install zsh -y
       description: Installing zsh
-    -
-      command: chsh -s $(which zsh)
+    - command: chsh -s $(which zsh)
       description: Changing default shell to zsh
 
 - link:
@@ -31,4 +29,3 @@
       force: true
       create: true
       path: nvim
-
