@@ -20,14 +20,19 @@ return {
 
             null_ls.setup({
                 sources = {
+                    -- lua
                     formatting.stylua,
-
+                    -- ts, js
                     diagnostics.eslint_d,
+                    -- web
                     formatting.prettier,
-
+                    -- yaml
                     diagnostics.yamllint,
-
+                    -- gitsigns
                     code_actions.gitsigns,
+                    -- shell
+                    diagnostics.shellcheck,
+                    formatting.beautysh,
                 },
             })
 
