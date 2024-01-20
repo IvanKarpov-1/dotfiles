@@ -6,7 +6,7 @@ return {
         local catppuccin = require("catppuccin")
 
         catppuccin.setup({
-            flavour = "frappe",
+            flavour = "macchiato",
             integrations = {
                 cmp = true,
                 gitsigns = true,
