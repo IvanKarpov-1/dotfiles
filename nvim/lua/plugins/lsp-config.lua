@@ -54,6 +54,12 @@ return {
             lspconfig.yamlls.setup({
                 capabilities = capabilities,
             })
+            lspconfig.bashls.setup({
+                capabilities = capabilities,
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities,
+            })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -66,5 +72,16 @@ return {
             vim.opt.mousemoveevent = true
         end,
         config = true,
-    }
+    },
+    {
+        "smjonas/inc-rename.nvim",
+        config = function()
+            require("inc_rename").setup()
+
+            vim.keymap.set("n", "<leader>rn", ":IncRename ")
+            vim.keymap.set("n", "<leader>RN", function()
+                return ":IncRename " .. vim.fn.expand("<cword>")
+            end, { expr = true })
+        end,
+    },
 }

@@ -18,8 +18,20 @@ return {
                     theme = catppuccin,
                 },
                 sections = {
-                    lualine_a = {
-                        "buffers",
+                    -- lualine_a = {
+                    --     "buffers",
+                    -- },
+                    lualine_x = {
+                        {
+                            require("noice").api.status.command.get,
+                            cond = require("noice").api.status.command.has,
+                            color = { fg = "#8bd5ca" },
+                        },
+                        {
+                            require("noice").api.statusline.mode.get,
+                            cond = require("noice").api.statusline.mode.has,
+                            color = { fg = "#8bd5ca" }
+                        }
                     },
                 },
                 winbar = {

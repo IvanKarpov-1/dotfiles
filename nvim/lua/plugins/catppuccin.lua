@@ -18,7 +18,7 @@ return {
                     indentscope_color = "",
                 },
                 neotree = false,
-            }
+            },
         })
 
         vim.cmd.colorscheme("catppuccin")

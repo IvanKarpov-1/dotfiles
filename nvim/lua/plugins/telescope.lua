@@ -23,6 +23,7 @@ return {
             vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
             telescope.load_extension("ui-select")
+            telescope.load_extension("noice")
         end,
     },
     {

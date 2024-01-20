@@ -36,7 +36,7 @@ return {
                     wilder.check(function(_, x)
                         return x == ""
                     end),
-                wilder.history(),
+                    wilder.history(),
                 },
                 wilder.python_search_pipeline({
                     pattern = wilder.python_fuzzy_pattern({
@@ -52,14 +52,14 @@ return {
         }
 
         local highlights = {
-            accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
+            accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#8bd5ca" } }),
         }
 
         local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-            border = "rounded",
             empty_message = wilder.popupmenu_empty_message_with_spinner(),
             highlighter = highlighters,
             highlights = highlights,
+            border = { "", "", "", "", "", "", "", "", "" },
             left = {
                 " ",
                 wilder.popupmenu_devicons(),
