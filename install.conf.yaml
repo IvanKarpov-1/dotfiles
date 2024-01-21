@@ -18,11 +18,11 @@
 
 - link:
     # shell
-    ~/.bashrc: shell/bashrc
-    ~/.zshrc: shell/zshrc
-    ~/.zshrc.pre-oh-my-zsh: shell/zshrc.pre-oh-my-zsh
-    ~/.zshrc.zni: shell/zshrc.zni
-    ~/.oh-my-zsh: shell/oh-my-zsh
+    ~/.bashrc: bash/bashrc
+    ~/.zshrc: zsh/zshrc
+    ~/.zshrc.pre-oh-my-zsh: zsh/zshrc.pre-oh-my-zsh
+    ~/.zshrc.zni: zsh/zshrc.zni
+    ~/.oh-my-zsh: zsh/oh-my-zsh
 
     # nvim
     ~/.config/nvim:
