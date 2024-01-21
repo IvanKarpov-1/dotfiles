@@ -107,3 +107,8 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias ls="eza"
+alias ll="eza -alh"
+alias tree="eza --tree"
+alias pipes="$HOME/.local/bin/pipes.sh"
+export PATH=$PATH:/home/ivankarpov/.spicetify
