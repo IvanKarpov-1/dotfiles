@@ -30,15 +30,19 @@ return {
                         {
                             require("noice").api.statusline.mode.get,
                             cond = require("noice").api.statusline.mode.has,
-                            color = { fg = "#8bd5ca" }
-                        }
+                            color = { fg = "#8bd5ca" },
+                        },
                     },
                 },
                 winbar = {
                     lualine_c = {
-                        "navic",
-                        color_correction = nil,
-                        navic_opts = nil,
+                        {
+                            "navic",
+                            color_correction = "static",
+                            navic_opts = {
+                                highlight = true,
+                            },
+                        },
                     },
                 },
                 extensions = { "neo-tree" },

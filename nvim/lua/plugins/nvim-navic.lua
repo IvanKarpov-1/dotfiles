@@ -38,8 +38,8 @@ return {
             -- depth_limit = 5,
             -- depth_limit_indicator = "..",
             -- separator = " > ",
-            highlight = true,
-            safe_output = true,
+            -- highlight = true,
+            -- safe_output = true,
             click = true,
         })
     end,
