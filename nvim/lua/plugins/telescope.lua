@@ -30,7 +30,7 @@ return {
             vim.keymap.set("n", "<C-P>", builtin.find_files, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
             vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>", {})
+            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>", { silent = true })
 
             telescope.load_extension("ui-select")
             telescope.load_extension("noice")

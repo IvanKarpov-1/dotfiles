@@ -22,14 +22,14 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<C-d>", ":bdelete!<CR>", {})
-        vim.keymap.set("n", "<M-d>", ":bdelete! ", {})
-        vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", {})
-        vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", {})
-        vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", {})
-        vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", {})
-        vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", {})
-        vim.keymap.set("n", "<C-j>", ":lua require(\"bufferline\").go_to(1, true)<CR>", {})
-        vim.keymap.set("n", "<C-k>", ":lua require(\"bufferline\").go_to(-1, true)<CR>", {})
+        vim.keymap.set("n", "<C-d>", ":bdelete!<CR>", { silent = true })
+        vim.keymap.set("n", "<M-d>", ":bdelete! ", { silent = true })
+        vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", { silent = true })
+        vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", { silent = true })
+        vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", { silent = true })
+        vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", { silent = true })
+        vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", { silent = true })
+        vim.keymap.set("n", "<C-j>", ":lua require(\"bufferline\").go_to(1, true)<CR>", { silent = true })
+        vim.keymap.set("n", "<C-k>", ":lua require(\"bufferline\").go_to(-1, true)<CR>", { silent = true })
     end,
 }

@@ -13,8 +13,8 @@ return {
             },
         })
 
-        vim.keymap.set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", {})
-        vim.keymap.set({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", {})
+        vim.keymap.set({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { silent = true })
         vim.keymap.set("n", "<leader>hS", gitsigns.stage_buffer, {})
         vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, {})
         vim.keymap.set("n", "<leader>ts", gitsigns.toggle_signs, {})
