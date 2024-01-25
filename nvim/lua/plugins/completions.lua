@@ -15,21 +15,32 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
         dependencies = {
+            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-cmdline",
+            "dmitmel/cmp-cmdline-history",
+            {
+                "tzachar/cmp-fuzzy-path",
+                dependencies = {
+                    {
+                        "tzachar/fuzzy.nvim",
+                        dependencies = {
+                            "nvim-telescope/telescope-fzf-native.nvim",
+                            build = "make",
+                        }
+                    },
+                },
+            },
         },
         config = function()
             local cmp = require("cmp")
---            require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        -- vim.fn["vsnip#anonymous"](args.body)
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
@@ -43,13 +54,44 @@ return {
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+                    ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
-                    { name = "luasnip" }, -- For luasnip users.
+                    { name = "luasnip" },
                     { name = "buffer" },
-                    { name = "path" }
+                    { name = "path" },
+                    { name = "fuzzy_path" },
                 }),
+            })
+
+            cmp.setup.cmdline({ "/", "?" }, {
+                preselect = "none",
+                sources = {
+                    { name = "buffer" },
+                },
+                experimental = {
+                    ghost_text = true,
+                    native_menu = false,
+                },
+            })
+
+            cmp.setup.cmdline(":", {
+                preselect = "none",
+                sources = cmp.config.sources({
+                    { name = "path" },
+                    { name = "fuzzy_path" },
+                }, {
+                    { name = "cmdline" },
+                    { name = "cmdline_history" },
+                }),
+                experimental = {
+                    ghost_text = true,
+                    native_menu = false,
+                },
             })
         end,
     },
