@@ -3,6 +3,7 @@ return {
     version = "*",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
+        "famiu/bufdelete.nvim",
     },
     config = function()
         local bufferline = require("bufferline")
@@ -10,7 +11,7 @@ return {
         bufferline.setup({
             options = {
                 diagnostics = "nvim_lsp",
-                middle_mouse_command = "bdelete! %d",
+                middle_mouse_command = "Bdelete! %d",
                 right_mouse_command = "BufferLineTogglePin",
                 numbers = function(opts)
                     return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
@@ -22,8 +23,8 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<C-d>", ":bdelete!<CR>", { silent = true })
-        vim.keymap.set("n", "<M-d>", ":bdelete! ", { silent = true })
+        vim.keymap.set("n", "<C-d>", ":Bdelete!<CR>", { silent = true })
+        vim.keymap.set("n", "<M-d>", ":Bdelete! ", { silent = true })
         vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", { silent = true })
         vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", { silent = true })
         vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", { silent = true })
