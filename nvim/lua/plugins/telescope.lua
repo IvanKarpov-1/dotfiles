@@ -27,10 +27,10 @@ return {
             })
 
             local builtin = require("telescope.builtin")
-            vim.keymap.set("n", "<C-P>", builtin.find_files, {})
-            vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-            vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-            vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>", { silent = true })
+            vim.keymap.set("n", "<C-P>", builtin.find_files, { desc = "Find files" })
+            vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search for a string" })
+            vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "List open buffers" })
+            vim.keymap.set("n", "<leader>u", ":Telescope undo<CR>", { silent = true })
 
             telescope.load_extension("ui-select")
             telescope.load_extension("noice")

@@ -8,6 +8,6 @@ return {
             snippet_engine = "luasnip",
         })
 
-        vim.keymap.set("n", "<leader>nf", neogen.generate, {})
+        vim.keymap.set("n", "<leader>nf", neogen.generate, { desc = "Generate anotations" })
     end,
 }

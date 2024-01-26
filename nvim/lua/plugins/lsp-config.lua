@@ -64,9 +64,9 @@ return {
                 capabilities = capabilities,
             })
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Open code actions" })
         end,
     },
     {
@@ -81,10 +81,10 @@ return {
         config = function()
             require("inc_rename").setup()
 
-            vim.keymap.set("n", "<leader>rn", ":IncRename ")
+            vim.keymap.set("n", "<leader>rn", ":IncRename ", { desc = "Rename variable (will erase initial word)" })
             vim.keymap.set("n", "<leader>RN", function()
                 return ":IncRename " .. vim.fn.expand("<cword>")
-            end, { expr = true })
+            end, { expr = true, desc = "Rename variable (will not erase initial word)" })
         end,
     },
 }

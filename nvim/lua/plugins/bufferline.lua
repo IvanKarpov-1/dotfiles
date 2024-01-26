@@ -23,14 +23,14 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<C-d>", ":Bdelete!<CR>", { silent = true })
-        vim.keymap.set("n", "<M-d>", ":Bdelete! ", { silent = true })
-        vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", { silent = true })
-        vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", { silent = true })
-        vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", { silent = true })
-        vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", { silent = true })
-        vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", { silent = true })
-        vim.keymap.set("n", "<C-j>", ":lua require(\"bufferline\").go_to(1, true)<CR>", { silent = true })
-        vim.keymap.set("n", "<C-k>", ":lua require(\"bufferline\").go_to(-1, true)<CR>", { silent = true })
+        vim.keymap.set("n", "<C-d>", ":Bdelete!<CR>", { silent = true, desc = "Delete current buffer" })
+        vim.keymap.set("n", "<M-d>", ":Bdelete! ", { silent = true, desc = "Delete buffer X" })
+        vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", { silent = true, desc = "Go to buffer X" })
+        vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", { silent = true, desc = "Move current buffer backward" })
+        vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", { silent = true, desc = "Move current buffer forward"})
+        vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", { silent = true, desc = "Go to the previous buffer" })
+        vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", { silent = true, desc = "Go to the next buffer" })
+        vim.keymap.set("n", "<C-j>", ":lua require(\"bufferline\").go_to(1, true)<CR>", { silent = true, desc = "Go to the first buffer" })
+        vim.keymap.set("n", "<C-k>", ":lua require(\"bufferline\").go_to(-1, true)<CR>", { silent = true, desc = "Go to the last buffer" })
     end,
 }

@@ -6,12 +6,14 @@ return {
             function()
                 require("codewindow").toggle_minimap()
             end,
+            desc = "Toogle minimap"
         },
         {
             "<leader>mf",
             function()
                 require("codewindow").toggle_focus()
-            end
+            end,
+            desc = "Toggle minimap focus"
         }
     },
     opts = {

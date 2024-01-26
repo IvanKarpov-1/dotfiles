@@ -7,6 +7,7 @@ return {
         {
             "<leader>lg",
             ":LazyGit<CR>",
+            desc = "Open LazyGit",
         },
     },
 }

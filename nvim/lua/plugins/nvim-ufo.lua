@@ -60,6 +60,6 @@ return {
             if not winid then
                 vim.lsp.buf.hover()
             end
-        end)
+        end, { desc = "Peek folded lines under cursos" })
     end,
 }
