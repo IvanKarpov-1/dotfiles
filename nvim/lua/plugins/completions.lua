@@ -22,6 +22,7 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "dmitmel/cmp-cmdline-history",
+            "chrisgrieser/cmp_yanky",
             {
                 "tzachar/cmp-fuzzy-path",
                 dependencies = {
@@ -65,6 +66,7 @@ return {
                     { name = "buffer" },
                     { name = "path" },
                     { name = "fuzzy_path" },
+                    { name = "cmp_yanky" },
                 }),
             })
 

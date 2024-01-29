@@ -35,6 +35,7 @@ return {
             telescope.load_extension("ui-select")
             telescope.load_extension("noice")
             telescope.load_extension("undo")
+            telescope.load_extension("yank_history")
         end,
     },
 }
