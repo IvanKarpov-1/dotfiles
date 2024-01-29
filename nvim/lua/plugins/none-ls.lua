@@ -33,6 +33,9 @@ return {
                     -- shell
                     diagnostics.shellcheck,
                     formatting.beautysh,
+                    -- markdown
+                    diagnostics.markdownlint,
+                    diagnostics.vale,
                 },
             })
 
