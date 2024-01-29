@@ -1,8 +1,8 @@
 #!/bin/sh
 
-set -x
+set -e
 
-SCRIPT_DIR=$PWD
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 CATPPUCCIN_THEME="Catppuccin-Macchiato-Standard-Teal-Dark"
 CATPPUCCIN_CURSOR="Afterglow-Recolored-Catppuccin-Teal-v3"
 
