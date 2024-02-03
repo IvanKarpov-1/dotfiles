@@ -72,6 +72,9 @@ return {
             lspconfig.marksman.setup({
                 capabilities = capabilities,
             })
+            lspconfig.pyright.setup({
+                capabilities = capabilities,
+            })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })

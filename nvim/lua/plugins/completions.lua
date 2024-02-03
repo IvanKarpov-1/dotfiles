@@ -31,7 +31,7 @@ return {
                         dependencies = {
                             "nvim-telescope/telescope-fzf-native.nvim",
                             build = "make",
-                        }
+                        },
                     },
                 },
             },
@@ -63,10 +63,11 @@ return {
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
+                    -- { name = "cmp_yanky" },
+                }, {
                     { name = "buffer" },
                     { name = "path" },
                     { name = "fuzzy_path" },
-                    { name = "cmp_yanky" },
                 }),
             })
 
