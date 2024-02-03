@@ -6,8 +6,6 @@ return {
         local silicon = require("silicon")
 
         silicon.setup({
-            -- -- theme and bg are specified in the silicon conf file
-            -- -- so no need to explicitly add them here
             theme = "Catppuccin-macchiato",
             background = "#fff0",
             font = "RobotoMono Nerd Font Mono=13",
