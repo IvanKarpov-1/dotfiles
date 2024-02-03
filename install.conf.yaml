@@ -1,3 +1,4 @@
+---
 - defaults:
     link:
       relink: true
@@ -9,12 +10,15 @@
 - clean: ["~"]
 
 - shell:
+    - sudo echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+    - sudo echo "defaultyes=True" >> /etc/dnf/dnf.conf
+    - sudo echo "keepcache=True" >> /etc/dnf/dnf.conf
+    - sudo dnf autoremove && sudo dnf clean all
+    - gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift>Alt_L']"
+    - gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L']"
     - mkdir -p ~/.config
     - [git submodule update --init --recursive, Installing submodules]
-    - command: sudo dnf install zsh -y
-      description: Installing zsh
-    - command: chsh -s $(which zsh)
-      description: Changing default shell to zsh
+    - scripts/setup_zsh.sh
 
 - link:
     # shell
