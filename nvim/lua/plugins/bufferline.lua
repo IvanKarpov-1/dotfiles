@@ -24,7 +24,7 @@ return {
         })
 
         vim.keymap.set("n", "<C-d>", ":Bdelete!<CR>", { silent = true, desc = "Delete current buffer" })
-        vim.keymap.set("n", "<M-d>", ":Bdelete! ", { silent = true, desc = "Delete buffer X" })
+        vim.keymap.set("n", "<M-d>", ":Bdelete! ", { desc = "Delete buffer X" })
         vim.keymap.set("n", "<leader>gb", ":BufferLineGoToBuffer ", { silent = true, desc = "Go to buffer X" })
         vim.keymap.set("n", "<S-h>", ":BufferLineMovePrev<CR>", { silent = true, desc = "Move current buffer backward" })
         vim.keymap.set("n", "<S-l>", ":BufferLineMoveNext<CR>", { silent = true, desc = "Move current buffer forward"})
