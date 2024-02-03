@@ -14,6 +14,9 @@ mkdir -p "$THEME_TEMP"
 # create temp directory for cursor
 CURSOR_TEMP="${TEMP_DIR}/cursor"
 mkdir -p "$CURSOR_TEMP"
+# create temp directory for bat theme
+BAT_TEMP="${TEMP_DIR}/bat_theme"
+mkdir -p "$BAT_TEMP"
 
 # download theme
 if ! compgen -G "$THEME_TEMP/archive/${CATPPUCCIN_THEME}.zip" > /dev/null; then
@@ -30,6 +33,7 @@ if ! compgen -G "$CURSOR_TEMP/archive/${CATPPUCCIN_CURSOR}.tar.gz" > /dev/null; 
         | grep "$CATPPUCCIN_CURSOR.tar.gz")
     wget -P "$CURSOR_TEMP/archive" "$cursor_url"
 fi
+
 
 # theme installation
 # unzip themes
@@ -53,8 +57,9 @@ gsettings set org.gnome.desktop.wm.preferences theme $CATPPUCCIN_THEME
 gsettings set org.gnome.desktop.interface gtk-theme $CATPPUCCIN_THEME
 
 # give Flatpak apps access to GTK themes location
-sudo flatpak override --filesystem="$THEMES_DIR/:ro"
-sudo flatpak override --env=GTK_THEME=$CATPPUCCIN_THEME
+flatpak --user override --filesystem="$THEMES_DIR/:ro"
+flatpak --user override --env=GTK_THEME=$CATPPUCCIN_THEME
+
 
 # cursor installation
 # unzip cursor
@@ -73,8 +78,42 @@ cp -r -n "${CURSOR_TEMP}/${CATPPUCCIN_CURSOR}/${CATPPUCCIN_CURSOR}" "$CURSOR_DIR
 gsettings set org.gnome.desktop.interface cursor-theme $CATPPUCCIN_CURSOR
 
 # give Flatpak apps access to cursor themes location
-sudo flatpak override --filesystem="$CURSOR_DIR/:ro"
-sudo flatpak override --env=CURSOR_THEME=$CATPPUCCIN_CURSOR
+flatpak --user override --filesystem="$CURSOR_DIR/:ro"
+flatpak --user override --env=CURSOR_THEME=$CATPPUCCIN_CURSOR
+
+
+# theme for bat
+# clone repo
+if ! compgen -G "$BAT_TEMP/.git" > /dev/null; then
+    git clone https://github.com/catppuccin/bat "$BAT_TEMP"
+fi
+
+# create directory for bat themes
+mkdir -p "$(bat --config-dir)/themes"
+
+# copy all .tmTheme files
+cp "${BAT_TEMP}/"*".tmTheme" "$(bat --config-dir)/themes" > /dev/null 2>&1
+
+# rebuild bat's cache
+bat cache --build
+
+# add theme to config files
+echo "--theme=\"Catppuccin-macchiato\"" >> "$(bat --config-file)"
+
+
+# theme for silicon
+# without this directory silicon --build-cache won't work
+mkdir -p "$(bat --config-dir)/syntaxes"
+
+# cd to bat --config-dir
+cd "$(bat --config-dir)"
+
+# rebuild silicon cache
+silicon --build-cache
+
+# cd back to script dir
+cd "$SCRIPT_DIR"
+
 
 # remove temp directory
 rm -rf "${TEMP_DIR}"
