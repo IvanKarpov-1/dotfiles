@@ -66,6 +66,9 @@ return {
             lspconfig.html.setup({
                 capabilities = capabilities,
             })
+            lspconfig.emmet_language_server.setup({
+                capabilities = capabilities
+            })
             lspconfig.omnisharp.setup({
                 capabilities = capabilities,
             })
