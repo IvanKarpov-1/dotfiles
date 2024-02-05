@@ -55,7 +55,8 @@ sudo dnf install -y \
     qalc \
     lazygit \
     unrar \
-    betterdiscordctl
+    betterdiscordctl \
+    xclip
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
