@@ -16,3 +16,6 @@ opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
+opt.wrap = false
+opt.sidescroll = 1
+opt.sidescrolloff = 7
