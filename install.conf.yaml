@@ -16,8 +16,11 @@
     - sudo dnf autoremove && sudo dnf clean all
     - gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift>Alt_L']"
     - gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L']"
-    - mkdir -p ~/.config
     - [git submodule update --init --recursive, Installing submodules]
+    - mkdir -p ~/.config
+    - scripts/install.sh
+    - scripts/setup_extensions.sh
+    - scripts/setup_themes.sh
     - scripts/setup_zsh.sh
 
 - link:
