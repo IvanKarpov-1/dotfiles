@@ -31,6 +31,7 @@
   "mini.animate": { "branch": "main", "commit": "6cec625114007527ff8a82316dba858046f9746f" },
   "mini.comment": { "branch": "main", "commit": "b0b359ada4293cdcea7ab4072dfd5b031aac3f8e" },
   "mini.move": { "branch": "main", "commit": "03a16d64e58da0a871de6493c3d8fa1101baef46" },
+  "mini.splitjoin": { "branch": "main", "commit": "0fddd7a9147f6d1a411b21a7813b3f991544881c" },
   "mini.surround": { "branch": "main", "commit": "5ceb6a12d3761bc719fbdad5432c89333deb1498" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "e578fe7a5832421b0d2c5b3c0a7a1e40e0f6a47a" },
   "neogen": { "branch": "main", "commit": "70127baaff25611deaf1a29d801fc054ad9d2dc1" },
