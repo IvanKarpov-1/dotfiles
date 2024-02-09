@@ -67,7 +67,7 @@ return {
                 capabilities = capabilities,
             })
             lspconfig.emmet_language_server.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
             })
             lspconfig.omnisharp.setup({
                 capabilities = capabilities,
@@ -82,6 +82,8 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Open code actions" })
+
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#24273a" })
         end,
     },
     {
@@ -100,6 +102,17 @@ return {
             vim.keymap.set("n", "<leader>RN", function()
                 return ":IncRename " .. vim.fn.expand("<cword>")
             end, { expr = true, desc = "Rename variable (will not erase initial word)" })
+        end,
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        config = function()
+            local lsp_signature = require("lsp_signature")
+
+            lsp_signature.setup({
+                hint_enable = false,
+            })
         end,
     },
 }

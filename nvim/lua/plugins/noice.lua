@@ -15,12 +15,15 @@ return {
                     ["vim.lsp.util.stylize_markdown"] = true,
                     ["cmp.entry.get_documentation"] = true,
                 },
+                signature = {
+                    enabled = false,
+                }
             },
             presets = {
                 bottom_search = false,
                 command_palette = true,
                 long_message_to_split = true,
-                lsp_doc_border = false,
+                lsp_doc_border = true,
                 inc_rename = true,
             },
         })
