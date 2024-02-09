@@ -18,9 +18,6 @@ return {
                     theme = catppuccin,
                 },
                 sections = {
-                    -- lualine_a = {
-                    --     "buffers",
-                    -- },
                     lualine_x = {
                         {
                             require("noice").api.status.command.get,
@@ -31,17 +28,6 @@ return {
                             require("noice").api.statusline.mode.get,
                             cond = require("noice").api.statusline.mode.has,
                             color = { fg = "#8bd5ca" },
-                        },
-                    },
-                },
-                winbar = {
-                    lualine_c = {
-                        {
-                            "navic",
-                            color_correction = "static",
-                            navic_opts = {
-                                highlight = true,
-                            },
                         },
                     },
                 },
