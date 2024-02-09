@@ -107,5 +107,9 @@ alias ll="eza -alhg"
 alias tree="eza --tree"
 alias pipes="$HOME/.local/bin/pipes.sh"
 
+SILICON_BASE="silicon --no-window-controls --no-line-number  --pad-horiz 0 --pad-vert 0 --theme \"Catppuccin-macchiato\" --shadow-offset-x 0 --shadow-offset-y 0 --shadow-blur-radius 0"
+alias sil="$SILICON_BASE -o"
+alias sil-c="$SILICON_BASE --from-clipboard -o"
+
 export PATH=$PATH:/home/ivankarpov/.spicetify
 export PATH=$PATH:/home/ivankarpov/.cargo/bin
