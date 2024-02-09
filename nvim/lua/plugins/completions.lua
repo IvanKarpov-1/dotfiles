@@ -38,6 +38,12 @@ return {
         },
         config = function()
             local cmp = require("cmp")
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+            cmp.event:on(
+                "confirm_done",
+                cmp_autopairs.on_confirm_done()
+            )
 
             cmp.setup({
                 snippet = {
@@ -54,7 +60,7 @@ return {
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
                     ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
                     ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
                     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
