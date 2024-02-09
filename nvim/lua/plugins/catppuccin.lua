@@ -18,6 +18,17 @@ return {
                     indentscope_color = "",
                 },
                 neotree = false,
+                navic = {
+                    enabled = true,
+                    -- enabled = false,
+                    custom_bg = "NONE",
+                },
+                ufo = true,
+                rainbow_delimiters = true,
+                telescope = {
+                    enabled = true,
+                },
+                which_key = false,
             },
         })
 

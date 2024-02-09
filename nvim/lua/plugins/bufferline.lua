@@ -1,6 +1,7 @@
 return {
     "akinsho/bufferline.nvim",
     version = "*",
+    after = "catppuccin",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
         "famiu/bufdelete.nvim",
@@ -11,6 +12,7 @@ return {
         bufferline.setup({
             options = {
                 diagnostics = "nvim_lsp",
+                highlights = require("catppuccin.groups.integrations.bufferline").get(),
                 middle_mouse_command = "Bdelete! %d",
                 right_mouse_command = "BufferLineTogglePin",
                 numbers = function(opts)
