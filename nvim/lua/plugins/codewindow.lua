@@ -1,20 +1,20 @@
 return {
-	"gorbit99/codewindow.nvim",
+    "gorbit99/codewindow.nvim",
     keys = {
         {
             "<leader>mm",
             function()
                 require("codewindow").toggle_minimap()
             end,
-            desc = "Toogle minimap"
+            desc = "Toogle minimap",
         },
         {
             "<leader>mf",
             function()
                 require("codewindow").toggle_focus()
             end,
-            desc = "Toggle minimap focus"
-        }
+            desc = "Toggle minimap focus",
+        },
     },
     opts = {
         max_minimap_height = 30,
@@ -22,5 +22,5 @@ return {
         screen_bounds = "background",
         window_border = "single",
         relative = "editor",
-    }
+    },
 }
