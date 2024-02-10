@@ -29,3 +29,5 @@ HISTCONTROL=ignoreboth
 
 # set history time format
 HISTTIMEFORMAT="%Y-%m-%d %T  "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

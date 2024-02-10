@@ -22,6 +22,8 @@ HIST_STAMPS="yyyy-mm-dd"
 setopt EXTENDED_HISTORY
 
 plugins=(git sudo encode64 copypath zsh-autosuggestions zsh-syntax-highlighting dirhistory jsontools zsh-history-substring-search fd fzf)
+# fzf configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \

@@ -42,7 +42,6 @@ sudo dnf install -y \
     wget \
     fd-find \
     ripgrep \
-    fzf \
     zsh \
     neofetch \
     tldr \
@@ -92,3 +91,6 @@ spicetify config prefs_path ~/.var/app/com.spotify.Client/config/spotify/prefs
 spicetify config spotify_path /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/
 sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify
 sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --key-bindings --completion --no-update-rc
