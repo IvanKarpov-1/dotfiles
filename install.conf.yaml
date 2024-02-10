@@ -36,3 +36,9 @@
       force: true
       create: true
       path: nvim
+
+    # asciinema
+    ~/.config/asciinema:
+      force: true,
+      create: true
+      path: asciinema
