@@ -42,6 +42,7 @@ sudo dnf install -y \
     wget \
     fd-find \
     ripgrep \
+    fzf \
     zsh \
     neofetch \
     tldr \
