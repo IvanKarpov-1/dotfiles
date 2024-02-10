@@ -71,7 +71,7 @@ setopt EXTENDED_HISTORY
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo encode64 copypath zsh-autosuggestions zsh-syntax-highlighting dirhistory jsontools zsh-history-substring-search)
+plugins=(git sudo encode64 copypath zsh-autosuggestions zsh-syntax-highlighting dirhistory jsontools zsh-history-substring-search fd)
 
 source $ZSH/oh-my-zsh.sh
 
