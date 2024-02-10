@@ -27,8 +27,6 @@
     # shell
     ~/.bashrc: bash/bashrc
     ~/.zshrc: zsh/zshrc
-    ~/.zshrc.pre-oh-my-zsh: zsh/zshrc.pre-oh-my-zsh
-    ~/.zshrc.zni: zsh/zshrc.zni
     ~/.oh-my-zsh: zsh/oh-my-zsh
 
     # nvim
