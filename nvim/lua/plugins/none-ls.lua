@@ -45,6 +45,13 @@ return {
                     }),
                     diagnostics.ruff,
                     formatting.black,
+                    -- c/c++
+                    formatting.clang_format,
+                    diagnostics.cpplint.with({
+                        args = function()
+                            return { "--filter=-legal/copyright", "$FILENAME" }
+                        end,
+                    }),
                 },
             })
 

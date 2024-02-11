@@ -78,6 +78,13 @@ return {
             lspconfig.pyright.setup({
                 capabilities = capabilities,
             })
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                cmd = {
+                    "clangd",
+                    "--offset-encoding=utf-16",
+                }
+            })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Display hover information" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
