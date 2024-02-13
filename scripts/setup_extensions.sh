@@ -29,4 +29,4 @@ do
     rm "${i}".zip
 done
 
-dconf dump /org/gnome/shell/extensions/ < "./extensions.conf"
+dconf load /org/gnome/shell/extensions/ < "./extensions.conf"
