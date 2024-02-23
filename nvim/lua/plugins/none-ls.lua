@@ -49,7 +49,7 @@ return {
                     formatting.clang_format,
                     diagnostics.cpplint.with({
                         args = function()
-                            return { "--filter=-legal/copyright", "$FILENAME" }
+                            return { "--filter=-legal/copyright,-whitespace/line_length", "$FILENAME" }
                         end,
                     }),
                 },
