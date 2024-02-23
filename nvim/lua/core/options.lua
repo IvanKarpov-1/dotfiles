@@ -19,3 +19,14 @@ opt.foldenable = true
 opt.wrap = false
 opt.sidescroll = 1
 opt.sidescrolloff = 7
+
+local function escape(str)
+    local escape_chars = [[;,."|\]]
+    return vim.fn.escape(str, escape_chars)
+end
+
+local en = [[abcdefghijklmnopqrstuvwxyz,.;'[]`/]]
+local ua = [[фисвуапршолдьтщзйкіегмцчнябюжєхї'.]]
+local en_shift = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~?]]
+local ua_shift = [[ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯБЮЖЄХЇʼ,]]
+vim.opt.langmap = vim.fn.join({ escape(ua_shift) .. ";" .. escape(en_shift), escape(ua) .. ";" .. escape(en) }, ",")
