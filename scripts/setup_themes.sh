@@ -3,7 +3,7 @@
 set -e
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-CATPPUCCIN_THEME="Catppuccin-Macchiato-Standard-Teal-Dark"
+CATPPUCCIN_THEME="catppuccin-macchiato-teal-standard+default"
 CATPPUCCIN_CURSOR="Afterglow-Recolored-Catppuccin-Teal-v3"
 
 # create temp directories
@@ -22,6 +22,7 @@ mkdir -p "$BAT_TEMP"
 if ! compgen -G "$THEME_TEMP/archive/${CATPPUCCIN_THEME}.zip" > /dev/null; then
     theme_url=$(curl -s https://api.github.com/repos/catppuccin/gtk/releases/latest \
         | jq -r ".assets[] | select(.name | test(\"${spruce_type}\")) | .browser_download_url" \
+        | sed 's/%2B/+/g' \
         | grep "$CATPPUCCIN_THEME.zip")
     wget -P "$THEME_TEMP/archive" "$theme_url"
 fi
