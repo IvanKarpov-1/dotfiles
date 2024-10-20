@@ -32,7 +32,6 @@ plugins=(
     dirhistory
     jsontools
     zsh-history-substring-search
-    fd
     fzf
 )
 
