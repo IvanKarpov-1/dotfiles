@@ -1,9 +1,0 @@
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
-[submodule "shell/oh-my-zsh"]
-	path = shell/oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh/
-[submodule "thunderbird"]
-	path = thunderbird
-	url = https://github.com/catppuccin/thunderbird
