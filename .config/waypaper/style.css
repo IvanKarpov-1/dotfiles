@@ -1,0 +1,34 @@
+@import "/home/ivankarpov/.config/waypaper/colors.css";
+
+window {
+    background-color: @blur_background5;
+}
+
+.background {
+    background-color: @blur_background5;
+}
+/* 
+button.text-button {
+    color: @on_surface;
+    background-color: @surface;
+}
+
+button.text-button:hover {
+    color: @on_surface;
+    background-color: @surface;
+} */
+
+button:hover>image {
+    /* -gtk-icon-shadow: none;
+    -gtk-icon-effect: none; */
+}
+
+.highlighted-button {
+    background-image: none;
+    box-shadow: none;
+    background-color: @primary_container;
+}
+
+.highlighted-button>image, .highlighted-button:hover>image {
+    -gtk-icon-effect: highlight;
+}

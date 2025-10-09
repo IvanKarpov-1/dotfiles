@@ -1,0 +1,189 @@
+/* :root {
+
+    --background: rgb(17, 20, 15);
+
+    --error: rgb(255, 180, 171);
+
+    --error_container: rgb(147, 0, 10);
+
+    --inverse_on_surface: rgb(46, 50, 43);
+
+    --inverse_primary: rgb(65, 104, 53);
+
+    --inverse_surface: rgb(225, 228, 218);
+
+    --on_background: rgb(225, 228, 218);
+
+    --on_error: rgb(105, 0, 5);
+
+    --on_error_container: rgb(255, 218, 214);
+
+    --on_primary: rgb(19, 56, 10);
+
+    --on_primary_container: rgb(193, 239, 175);
+
+    --on_primary_fixed: rgb(2, 33, 0);
+
+    --on_primary_fixed_variant: rgb(42, 79, 31);
+
+    --on_secondary: rgb(39, 52, 33);
+
+    --on_secondary_container: rgb(215, 232, 204);
+
+    --on_secondary_fixed: rgb(18, 31, 14);
+
+    --on_secondary_fixed_variant: rgb(61, 75, 55);
+
+    --on_surface: rgb(225, 228, 218);
+
+    --on_surface_variant: rgb(195, 200, 188);
+
+    --on_tertiary: rgb(0, 55, 57);
+
+    --on_tertiary_container: rgb(188, 235, 238);
+
+    --on_tertiary_fixed: rgb(0, 32, 33);
+
+    --on_tertiary_fixed_variant: rgb(30, 78, 80);
+
+    --outline: rgb(141, 147, 135);
+
+    --outline_variant: rgb(67, 72, 63);
+
+    --primary: rgb(166, 211, 148);
+
+    --primary_container: rgb(42, 79, 31);
+
+    --primary_fixed: rgb(193, 239, 175);
+
+    --primary_fixed_dim: rgb(166, 211, 148);
+
+    --scrim: rgb(0, 0, 0);
+
+    --secondary: rgb(187, 203, 177);
+
+    --secondary_container: rgb(61, 75, 55);
+
+    --secondary_fixed: rgb(215, 232, 204);
+
+    --secondary_fixed_dim: rgb(187, 203, 177);
+
+    --shadow: rgb(0, 0, 0);
+
+    --source_color: rgb(86, 130, 72);
+
+    --surface: rgb(17, 20, 15);
+
+    --surface_bright: rgb(55, 58, 52);
+
+    --surface_container: rgb(29, 33, 27);
+
+    --surface_container_high: rgb(39, 43, 37);
+
+    --surface_container_highest: rgb(50, 54, 47);
+
+    --surface_container_low: rgb(25, 29, 23);
+
+    --surface_container_lowest: rgb(12, 15, 10);
+
+    --surface_dim: rgb(17, 20, 15);
+
+    --surface_tint: rgb(166, 211, 148);
+
+    --surface_variant: rgb(67, 72, 63);
+
+    --tertiary: rgb(160, 207, 209);
+
+    --tertiary_container: rgb(30, 78, 80);
+
+    --tertiary_fixed: rgb(188, 235, 238);
+
+    --tertiary_fixed_dim: rgb(160, 207, 209);
+
+} */
+
+
+#browser {
+    /************ main toolbar on top (contrast improved) **************/
+
+    /* Tab bar (override: darker and slightly desaturated so it doesn't steal focus) */
+    --colorTabBar: rgb(17, 20, 15) !important;
+
+    /* Foregrounds (make text a touch brighter for legibility) */
+    --colorFg: rgb(225, 228, 218) !important;
+    --colorFgAlpha: rgba(225, 228, 218, 0.2) !important;
+    --colorFgIntense: rgb(255, 255, 255) !important;
+    --colorFgFaded: rgb(210, 215, 200) !important;
+    --colorFgFadedMore: rgb(196, 202, 182) !important;
+    --colorFgFadedMost: rgb(181, 189, 164) !important;
+
+    /* Backgrounds
+       - Use the darkest surface as the page background and a slightly lighter container for panels/cards.
+       - This gives visible separation between the page and widgets. */
+    --colorBg: rgb(29, 33, 27) !important;
+    --colorBgAlpha: rgba(55, 58, 52, 0.9) !important;
+    --colorBgAlphaHeavy: rgba(55, 58, 52, 0.8) !important;
+    --colorBgAlphaHeavier: rgba(55, 58, 52, 0.7) !important;
+    --colorBgAlphaBlur: rgb(29, 33, 27) !important;
+    --colorBgDark: rgb(17, 20, 15) !important;
+    --colorBgDarker: rgb(12, 15, 10) !important;
+    --colorBgLight: rgb(39, 43, 37) !important;
+    --colorBgLighter: rgb(50, 54, 47) !important;
+    --colorBgLightIntense: rgb(65, 70, 61) !important;
+    --colorBgIntense: rgb(17, 20, 15) !important;
+    --colorBgIntenser: rgb(12, 15, 10) !important;
+    --colorBgIntserAlpha: rgba(12, 15, 10, 0.9) !important;
+    --colorBgInverse: rgb(39, 43, 37) !important;
+    --colorBgInverser: rgb(46, 51, 44) !important;
+    --colorBgFaded: rgb(67, 72, 63) !important;
+
+    /* Highlights (selection etc.) — keep them visible but not overpowering */
+    --colorHighlightBg: rgb(187, 203, 177) !important;
+    --colorHighlightBgFaded: rgb(215, 232, 204) !important;
+    --colorHighlightBgAlpha: rgba(187, 203, 177, 0.1) !important;
+    --colorHighlightBgDark: rgb(170, 190, 158) !important;
+    --colorHighlightFg: rgb(39, 52, 33) !important;
+    --colorHighlightFgAlpha: rgba(39, 52, 33, 0.5) !important;
+    --colorHighlightFgAlphaHeavy: rgba(39, 52, 33, 0.1) !important;
+
+    /* Accent (primary family) — reduce alpha so tab-bar/accents aren't too bright */
+    --colorAccentBg: rgb(73, 137, 53) !important;
+    --colorAccentBgAlpha: rgba(42, 79, 31, 0.4) !important;
+    --colorAccentBgAlphaHeavy: rgba(42, 79, 31, 0.2) !important;
+    --colorAccentBgDark: rgb(30, 57, 22) !important;
+    --colorAccentBgDarker: rgb(18, 35, 13) !important;
+    --colorAccentBgFaded: rgb(45, 86, 33) !important;
+    --colorAccentBgFadedMore: rgb(49, 93, 36) !important;
+    --colorAccentBgFadedMost: rgb(53, 100, 39) !important;
+    --colorAccentBorder: rgb(42, 79, 31) !important;
+    --colorAccentBorderDark: rgb(30, 57, 22) !important;
+
+    /*  */
+    --colorAccentFg: rgb(193, 239, 175) !important;
+    --colorAccentFgFaded: rgb(173, 233, 149) !important;
+    --colorAccentFgAlpha: rgba(193, 239, 175, 0.2) !important;
+    --colorAccentFgAlphaHeavy: rgba(193, 239, 175, 0.1) !important;
+
+    /* Borders — make them a little more visible so widgets/cards separate from background */
+    --colorBorder: rgb(17, 20, 15) !important;
+    --colorBorderDisabled: rgb(12, 15, 10) !important;
+    --colorBorderSubtle: rgb(16, 21, 14) !important;
+    --colorBorderIntense: rgb(0, 0, 0) !important;
+
+    /* Status colors (keep recognizable) */
+    /* --colorSuccessBg: rgb(160, 207, 209) !important;
+    --colorSuccessBgAlpha: rgba(160, 207, 209, 0.1) !important;
+    --colorSuccessFg: rgb(0, 55, 57) !important;
+
+    --colorWarningBg: rgb(197, 0, 13) !important;
+    --colorWarningBgAlpha: rgba(147, 0, 10, 0.1) !important;
+    --colorWarningFg: rgb(255, 218, 214); */
+
+    --colorErrorBg: rgb(147, 0, 10) !important;
+    --colorErrorBgAlpha: rgba(147, 0, 10, 0.1) !important;
+    --colorErrorFg: rgb(255, 218, 214) !important;
+
+    /* Window */
+    /* --colorWindowBg: rgb(17, 20, 15) !important;
+    --colorWindowFg: rgb(225, 228, 218) !important; */
+}

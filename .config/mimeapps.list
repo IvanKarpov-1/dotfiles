@@ -1,0 +1,12 @@
+[Default Applications]
+inode/directory=org.gnome.Nautilus.desktop
+text/html=vivaldi-stable.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+
+[Added Associations]
+inode/directory=nautilus.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;

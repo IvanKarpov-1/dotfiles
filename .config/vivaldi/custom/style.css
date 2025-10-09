@@ -1,0 +1,98 @@
+@import "vivaldi-colors.css";
+
+/************ main toolbar on top **************/
+/* #browser {
+    --colorTabBar: var(--colorAccentBg);
+
+    --colorFg:  #d3d9e3;
+    --colorFgAlpha:  #d3d9e31a;
+    --colorFgIntense:  #f9ffff;
+    --colorFgFaded:  #c9ced8;
+    --colorFgFadedMore:  #bec3cd;
+    --colorFgFadedMost:  #a6abb3;
+
+    --colorBg:  #2e2f37;
+    --colorBgAlpha:  #2e2f37e6;
+    --colorBgAlphaHeavy:  #2e2f37a6;
+    --colorBgAlphaHeavier:  #2e2f3740;
+    --colorBgAlphaBlur:  #2e2f37;
+    --colorBgDark:  #282931;
+    --colorBgDarker:  #23242b;
+    --colorBgLight:  #32333b;
+    --colorBgLighter:  #42434b;
+    --colorBgLightIntense:  #36373f;
+    --colorBgIntense:  #1b1c24;
+    --colorBgIntenser:  #14151c;
+    --colorBgIntserAlpha:  #101119eb;
+    --colorBgInverse:  #32333b;
+    --colorBgInverser:  #3e3f47;
+    --colorBgFaded:  #3a3b43;
+
+    --colorHighlightBg:  #6590fd;
+    --colorHighlightBgFaded:  #9cc0ff;
+    --colorHighlightBgAlpha:  #6590fd1a;
+    --colorHighlightBgDark:  #4779e3;
+    --colorHighlightFg:  #ffffff;
+    --colorHighlightFgAlpha:  #ffffff80;
+    --colorHighlightFgAlphaHeavy:  #ffffff40;
+
+    --colorAccentBg:  #4b4c53;
+    --colorAccentBgAlpha:  #8081898c;
+    --colorAccentBgAlphaHeavy:  #80818959;
+    --colorAccentBgDark:  #3b3c42;
+    --colorAccentBgDarker:  #23242a;
+    --colorAccentBgFaded:  #404040;
+    --colorAccentBgFadedMore:  #606169;
+    --colorAccentBgFadedMost:  #808189;
+    --colorAccentBorder:  #4b4c53;
+    --colorAccentBorderDark:  #414248;
+
+    --colorAccentFg:  #ffffff;
+    --colorAccentFgFaded:  #cbcbcc;
+    --colorAccentFgAlpha:  #ffffff26;
+    --colorAccentFgAlphaHeavy:  #ffffff0d;
+
+    --colorBorder:  #1b1c24;
+    --colorBorderDisabled:  #23242b;
+    --colorBorderSubtle:  #212229;
+    --colorBorderIntense:  #0b0c15;
+
+    --colorSuccessBg:  #06a700;
+    --colorSuccessBgAlpha:  #06a7001a;
+    --colorSuccessFg:  #ffffff;
+
+    --colorWarningBg:  #ffcc00;
+    --colorWarningBgAlpha:  #ffcc001a;
+    --colorWarningFg:  #000000;
+    
+    --colorErrorBg:  #c64539;
+    --colorErrorBgAlpha:  #c645391a;
+    --colorErrorFg:  #ffffff;
+    
+    --colorWindowBg:  #1d1e21;
+    --colorWindowFg:  #ffffff;
+} */
+
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred header,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred footer,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .panel-group,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .bookmark-bar,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .manager-editor,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .vivaldi-settings,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .toolbar,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .mainbar,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred:not(.is-settingspage) #header,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred #switch,
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred .tabbar-wrapper
+{
+    --colorTabBar: transparent !important;
+}
+
+:not(.ui-transparent-tabs).color-behind-tabs-on .tab {
+    background-color: var(--colorBgAlphaHeavier) !important;
+}
+
+#browser .tab.active {
+    background-color: var(--colorAccentBg) !important;
+    color: var(--colorAccentFg) !important;
+}

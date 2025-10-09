@@ -1,0 +1,91 @@
+/* :root {
+<* for name, value in colors *>
+    --{{name}}: {{value.default.rgb}};
+<* endfor *>
+} */
+
+
+#browser {
+    /************ main toolbar on top (contrast improved) **************/
+
+    /* Tab bar (override: darker and slightly desaturated so it doesn't steal focus) */
+    --colorTabBar: {{ colors.background.default.rgb }} !important;
+
+    /* Foregrounds (make text a touch brighter for legibility) */
+    --colorFg: {{ colors.on_background.default.rgb }} !important;
+    --colorFgAlpha: {{ colors.on_background.default.rgba | set_alpha: 0.25 }} !important;
+    --colorFgIntense: {{ colors.on_background.default.rgb | set_lightness: 18.0 }} !important;
+    --colorFgFaded: {{ colors.on_surface.default.rgb | set_lightness: -6.0 }} !important;
+    --colorFgFadedMore: {{ colors.on_surface.default.rgb | set_lightness: -12.0 }} !important;
+    --colorFgFadedMost: {{ colors.on_surface.default.rgb | set_lightness: -18.0 }} !important;
+
+    /* Backgrounds
+       - Use the darkest surface as the page background and a slightly lighter container for panels/cards.
+       - This gives visible separation between the page and widgets. */
+    --colorBg: {{ colors.surface_container.default.rgb }} !important;
+    --colorBgAlpha: {{ colors.surface_bright.default.rgba | set_alpha: 0.95 }} !important;
+    --colorBgAlphaHeavy: {{ colors.surface_bright.default.rgba | set_alpha: 0.80 }} !important;
+    --colorBgAlphaHeavier: {{ colors.surface_bright.default.rgba | set_alpha: 0.65 }} !important;
+    --colorBgAlphaBlur: {{ colors.surface_container.default.rgb }} !important;
+    --colorBgDark: {{ colors.surface.default.rgb }} !important;
+    --colorBgDarker: {{ colors.surface_container_lowest.default.rgb }} !important;
+    --colorBgLight: {{ colors.surface_container_high.default.rgb }} !important;
+    --colorBgLighter: {{ colors.surface_container_highest.default.rgb }} !important;
+    --colorBgLightIntense: {{ colors.surface_container_highest.default.rgb | set_lightness: 6.0 }} !important;
+    --colorBgIntense: {{ colors.background.default.rgb }} !important;
+    --colorBgIntenser: {{ colors.surface_container_lowest.default.rgb }} !important;
+    --colorBgIntserAlpha: {{ colors.surface_container_lowest.default.rgba | set_alpha: 0.9 }} !important;
+    --colorBgInverse: {{ colors.surface_container_high.default.rgb }} !important;
+    --colorBgInverser: {{ colors.surface_container_high.default.rgb | set_lightness: 3.0 }} !important;
+    --colorBgFaded: {{ colors.surface_variant.default.rgb }} !important;
+
+    /* Highlights (selection etc.) — keep them visible but not overpowering */
+    --colorHighlightBg: {{ colors.secondary.default.rgb }} !important;
+    --colorHighlightBgFaded: {{ colors.secondary_fixed.default.rgb }} !important;
+    --colorHighlightBgAlpha: {{ colors.secondary.default.rgba | set_alpha: 0.10 }} !important;
+    --colorHighlightBgDark: {{ colors.secondary.default.rgb | set_lightness: -6.0 }} !important;
+    --colorHighlightFg: {{ colors.on_secondary.default.rgb }} !important;
+    --colorHighlightFgAlpha: {{ colors.on_secondary.default.rgba | set_alpha: 0.50 }} !important;
+    --colorHighlightFgAlphaHeavy: {{ colors.on_secondary.default.rgba | set_alpha: 0.10 }} !important;
+
+    /* Accent (primary family) — reduce alpha so tab-bar/accents aren't too bright */
+    --colorAccentBg: {{ colors.primary_container.default.rgb | set_lightness: 16.0 }} !important;
+    --colorAccentBgAlpha: {{ colors.primary_container.default.rgba | set_alpha: 0.4 }} !important;
+    --colorAccentBgAlphaHeavy: {{ colors.primary_container.default.rgba | set_alpha: 0.2 }} !important;
+    --colorAccentBgDark: {{ colors.primary_container.default.rgb | set_lightness: -6.0 }} !important;
+    --colorAccentBgDarker: {{ colors.primary_container.default.rgb | set_lightness: -12.0 }} !important;
+    --colorAccentBgFaded: {{ colors.primary_container.default.rgb | set_lightness: 2.0 }} !important;
+    --colorAccentBgFadedMore: {{ colors.primary_container.default.rgb | set_lightness: 4.0 }} !important;
+    --colorAccentBgFadedMost: {{ colors.primary_container.default.rgb | set_lightness: 6.0 }} !important;
+    --colorAccentBorder: {{ colors.primary_container.default.rgb }} !important;
+    --colorAccentBorderDark: {{ colors.primary_container.default.rgb | set_lightness: -6.0 }} !important;
+
+    /*  */
+    --colorAccentFg: {{ colors.on_primary_container.default.rgb }} !important;
+    --colorAccentFgFaded: {{ colors.on_primary_container.default.rgb | set_lightness: -6.0 }} !important;
+    --colorAccentFgAlpha: {{ colors.on_primary_container.default.rgba | set_alpha: 0.2 }} !important;
+    --colorAccentFgAlphaHeavy: {{ colors.on_primary_container.default.rgba | set_alpha: 0.06 }} !important;
+
+    /* Borders — make them a little more visible so widgets/cards separate from background */
+    --colorBorder: {{ colors.background.default.rgb }} !important;
+    --colorBorderDisabled: {{ colors.surface_container_lowest.default.rgb }} !important;
+    --colorBorderSubtle: {{ colors.surface_container_lowest.default.rgb | set_lightness: 2.0 }} !important;
+    --colorBorderIntense: {{ colors.scrim.default.rgb }} !important;
+
+    /* Status colors (keep recognizable) */
+    /* --colorSuccessBg: {{ colors.tertiary.default.rgb }} !important;
+    --colorSuccessBgAlpha: {{ colors.tertiary.default.rgba | set_alpha: 0.12 }} !important;
+    --colorSuccessFg: {{ colors.on_tertiary.default.rgb }} !important;
+
+    --colorWarningBg: {{ colors.error_container.default.rgb | set_lightness: 10.0 }} !important;
+    --colorWarningBgAlpha: {{ colors.error_container.default.rgba | set_alpha: 0.12 }} !important;
+    --colorWarningFg: {{ colors.on_error_container.default.rgb }}; */
+
+    --colorErrorBg: {{ colors.error_container.default.rgb }} !important;
+    --colorErrorBgAlpha: {{ colors.error_container.default.rgba | set_alpha: 0.1 }} !important;
+    --colorErrorFg: {{ colors.on_error_container.default.rgb }} !important;
+
+    /* Window */
+    /* --colorWindowBg: {{ colors.background.default.rgb }} !important;
+    --colorWindowFg: {{ colors.on_background.default.rgb }} !important; */
+}

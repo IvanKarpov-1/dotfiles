@@ -1,0 +1,1 @@
+$(cat ~/.config/mimic/settings/terminal.sh) --class dotfiles-floating -e htop
