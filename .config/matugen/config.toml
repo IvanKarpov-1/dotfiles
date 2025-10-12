@@ -3,7 +3,7 @@
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/themes/colors-matugen.conf'
-post_hook = "kitty +kitten themes --reload-in=all colors-matugen"
+post_hook = "~/.config/kitty/apply-variant.sh; kitty +kitten themes --reload-in=all colors-matugen"
 
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
