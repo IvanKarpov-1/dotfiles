@@ -26,3 +26,6 @@ HISTFILE="$XDG_CACHE_HOME/zsh_history" # Move histfile to cache
 
 # Remove paste highlight
 zle_highlight=('paste:none')
+
+# Remove standart entries (*?_-.[]~=/&;!#$%^(){}<>) to not consider them part of the word
+WORDCHARS=''
