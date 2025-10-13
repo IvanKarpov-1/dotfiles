@@ -117,6 +117,12 @@ sleep 1
 $HOME/.config/waybar/launch.sh
 
 # -----------------------------------------------------
+# Update folders
+# -----------------------------------------------------
+
+$HOME/.config/hypr/scripts/update-icons.sh $(cat $HOME/.config/mimic/colors/primary)
+
+# -----------------------------------------------------
 # Update Pywalfox
 # -----------------------------------------------------
 
