@@ -51,3 +51,6 @@ fi
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal "$terminal"
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal use-generic-terminal-name "true"
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal keybindings "<Ctrl><Alt>t"
+
+# Restart XDG GTK portal (needed for file picker theming correctly)
+systemctl --user restart xdg-desktop-portal-gtk  
