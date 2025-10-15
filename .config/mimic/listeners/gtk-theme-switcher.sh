@@ -22,47 +22,10 @@ echo "Press Ctrl+C to stop."
 
 echo 'SCRIPT STARTED' > ~/.cache/temp_cache_from_start_script
 
-# Function to apply the theme based on the current settings
-apply_theme() {
-    echo 'APPLY THEME' > ~/.cache/temp_cache_from_start_script
-    # Check if the settings file exists
-    if [ ! -f "$SETTINGS_FILE" ]; then
-        echo "Error: $SETTINGS_FILE not found. Please ensure the file exists."
-        return 1
-    fi
-
-    # Extract the value of gtk-application-prefer-dark-theme
-    # We use grep to find the line and awk to get the value after the '='
-    THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | awk -F'=' '{print $2}')
-
-    if [ -z "$THEME_PREF" ]; then
-        echo "Warning: 'gtk-application-prefer-dark-theme' setting not found in $SETTINGS_FILE. Skipping theme application."
-        return 0
-    fi
-
-    if [ "$THEME_PREF" -eq 1 ]; then
-        echo "Detected dark theme preference (gtk-application-prefer-dark-theme=1). Applying dark matugen theme..."
-        $HOME/.local/bin/matugen image $(cat ~/.cache/mimic/hyprland-dotfiles/current_wallpaper)
-        $HOME/.config/nwg-dock-hyprland/launch.sh &
-        $HOME/.config/waybar/launch.sh &
-        $HOME/.config/hypr/scripts/gtk.sh &
-        swaync-client -rs
-    elif [ "$THEME_PREF" -eq 0 ]; then
-        echo "Detected light theme preference (gtk-application-prefer-dark-theme=0). Applying light matugen theme..."
-        $HOME/.local/bin/matugen image $(cat ~/.cache/mimic/hyprland-dotfiles/current_wallpaper) -m "light"
-        $HOME/.config/nwg-dock-hyprland/launch.sh &
-        $HOME/.config/waybar/launch.sh &
-        $HOME/.config/hypr/scripts/gtk.sh &
-        swaync-client -rs
-    else
-        echo "Warning: Unexpected value for gtk-application-prefer-dark-theme: $THEME_PREF. Expected 0 or 1. Skipping theme application."
-    fi
-}
-
 # Loop indefinitely, reading output from inotifywait
 inotifywait -m -q -e close_write,moved_to "$SETTINGS_DIR" | while read -r dir events filename; do
     if [[ "$filename" == "$SETTINGS_BASENAME" ]]; then
         echo "Change detected in $SETTINGS_FILE. Re-applying theme..."
-        apply_theme
+        $HOME/.config/hypr/scripts/wallpaper.sh
     fi
 done

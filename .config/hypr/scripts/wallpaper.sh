@@ -110,10 +110,16 @@ else
 fi
 
 # -----------------------------------------------------
+# Update GTK settings
+# -----------------------------------------------------
+
+$HOME/.config/hypr/scripts/gtk.sh
+
+# -----------------------------------------------------
 # Reload Waybar
 # -----------------------------------------------------
 
-sleep 1
+sleep 0.1
 $HOME/.config/waybar/launch.sh
 
 # -----------------------------------------------------
@@ -172,3 +178,10 @@ echo "* { current-image: url(\"$blurredwallpaper\", height); }" >"$rasifile"
 _writeLog "Generate new cached wallpaper square-$wallpaperfilename"
 magick $tmpwallpaper -gravity Center -extent 1:1 $squarewallpaper
 cp $squarewallpaper $generatedversions/square-$wallpaperfilename.png
+
+# -----------------------------------------------------
+# Restart auth polkit (needed so it can have new theme)
+# -----------------------------------------------------
+
+killall -9 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
