@@ -281,8 +281,8 @@
     // "scroll-step": 1, // %, can be a float
     "format": "{icon} {volume}%",
     "format-muted": " ",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-bluetooth": "{icon} {volume}% {format_source}",
+    "format-bluetooth-muted": "{icon}",
+    "format-bluetooth": "{icon} {volume}%",
     // "format-source": "{volume}% ",
     // "format-source-muted": "",
     "format-icons": {
@@ -307,9 +307,9 @@
   },
   // Bluetooth
   "bluetooth": {
-    "format": " {status}",
+    "format": "",
     "format-disabled": "",
-    "format-off": "",
+    "format-off": "󰂲",
     "interval": 30,
     "on-click": "sleep 0.1 && ~/.config/mimic/settings/bluetooth.sh",
     "format-no-controller": ""
@@ -343,8 +343,8 @@
     "scroll-step": 1
   },
   "mpris": {
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "format": "{player_icon}  {dynamic}",
+    "format-paused": "{status_icon}  <i>{dynamic}</i>",
     "player-icons": {
       "default": "▶",
       "mpv": "🎵"
