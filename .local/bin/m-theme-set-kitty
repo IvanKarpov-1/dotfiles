@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 # -----------------------------------------------------
 # Detect Theme
 # -----------------------------------------------------
 
-SETTINGS_FILE="$HOME/.config/gtk-3.0/settings.ini"
+SETTINGS_FILE="$config_dir/gtk-3.0/settings.ini"
 THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | awk -F'=' '{print $2}')
 
 # -----------------------------------------------------
 # Apply variant
 # -----------------------------------------------------
 
-config="$HOME/.config/kitty";
+config="$config_dir/kitty";
 
 if [ "$THEME_PREF" -eq 1 ]; then
     cat "$config/themes/colors-dark.conf" >> "$config/themes/colors-matugen.conf"
 else
     cat "$config/themes/colors-light.conf" >> "$config/themes/colors-matugen.conf"
 fi
+
+kitty +kitten themes --reload-in=all colors-matugen

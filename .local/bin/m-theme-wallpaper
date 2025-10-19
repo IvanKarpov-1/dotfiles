@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+#  _      __     ____                      
+# | | /| / /__ _/ / /__  ___ ____  ___ ____
+# | |/ |/ / _ `/ / / _ \/ _ `/ _ \/ -_) __/
+# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/   
+#                /_/       /_/             
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
+settings_dir="${XDG_CONFIG_HOME:-$HOME/.config}/mimic/settings"
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/mimic/hyprland-dotfiles"
+
+# -----------------------------------------------------
+# Check to use wallpaper cache
+# -----------------------------------------------------
+
+if [ -f "$settings_dir/wallpaper_cache" ]; then
+    use_cache=1
+    m-log "Using Wallpaper Cache"
+else
+    use_cache=0
+    m-log "Wallpaper Cache disabled"
+fi
+
+# -----------------------------------------------------
+# Create cache folder
+# -----------------------------------------------------
+
+if [ ! -d "$cache_dir" ]; then
+    mkdir -p "$cache_dir"
+fi
+
+# -----------------------------------------------------
+# Set defaults
+# -----------------------------------------------------
+
+force_generate=0
+
+# Cache for generated wallpapers with effects
+generatedversions="$cache_dir/wallpaper-generated"
+if [ ! -d "$generatedversions" ]; then
+    mkdir -p "$generatedversions"
+fi
+
+# Will be set when waypaper is running
+waypaperrunning="$cache_dir/waypaper-running"
+if [ -f "$waypaperrunning" ]; then
+    rm "$waypaperrunning"
+    exit
+fi
+
+cachefile="$cache_dir/current_wallpaper"
+blurredwallpaper="$cache_dir/blurred_wallpaper.png"
+squarewallpaper="$cache_dir/square_wallpaper.png"
+rasifile="$cache_dir/current_wallpaper.rasi"
+blurfile="$settings_dir/blur.sh"
+defaultwallpaper="$config_dir/mimic/wallpapers/default.jpg"
+blur="50x30"
+blur=$(cat "$blurfile")
+
+# -----------------------------------------------------
+# Get selected wallpaper
+# -----------------------------------------------------
+
+if [ -z "$1" ]; then
+    if [ -f "$cachefile" ]; then
+        wallpaper=$(cat "$cachefile")
+    else
+        wallpaper="$defaultwallpaper"
+    fi
+else
+    wallpaper="$1"
+fi
+used_wallpaper="$wallpaper"
+m-log "Setting wallpaper with source image $wallpaper"
+tmpwallpaper="$wallpaper"
+
+# -----------------------------------------------------
+# Copy path of current wallpaper to cache file
+# -----------------------------------------------------
+
+if [ ! -f "$cachefile" ]; then
+    touch "$cachefile"
+fi
+echo "$wallpaper" > "$cachefile"
+m-log "Path of current wallpaper copied to $cachefile"
+
+# -----------------------------------------------------
+# Get wallpaper filename
+# -----------------------------------------------------
+
+wallpaperfilename=$(basename "$wallpaper")
+m-log "Wallpaper Filename: $wallpaperfilename"
+
+# -----------------------------------------------------
+# Detect Theme
+# -----------------------------------------------------
+
+SETTINGS_FILE="$config_dir/gtk-3.0/settings.ini"
+THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | awk -F'=' '{print $2}')
+
+# -----------------------------------------------------
+# Execute matugen
+# -----------------------------------------------------
+
+m-log "Execute matugen with $used_wallpaper"
+if [ "$THEME_PREF" -eq 1 ]; then
+    matugen image "$used_wallpaper" -m "dark"
+    prefer_dark_theme_value="prefer-dark"
+    prefer_dark_theme_opposite_value="prefer-light"
+else
+    matugen image "$used_wallpaper" -m "light"
+    prefer_dark_theme_value="prefer-light"
+    prefer_dark_theme_opposite_value="prefer-dark"
+fi
+
+# -----------------------------------------------------
+# Update GTK settings
+# -----------------------------------------------------
+
+m-theme-set-gtk
+
+# -----------------------------------------------------
+# Update Kitty
+# -----------------------------------------------------
+
+m-theme-set-kitty
+
+# -----------------------------------------------------
+# Reload Waybar
+# -----------------------------------------------------
+
+# sleep 0.1
+# m-restart-waybar
+
+# -----------------------------------------------------
+# Update folders
+# -----------------------------------------------------
+
+color=$(<"$config_dir/mimic/colors/primary")
+m-theme-set-folder-icons "$color"
+
+# It's a workaround to dynamically change colors of the GTK apps (though not all 😢).
+# May cause flashes in some apps, so you can comment the line with `prefer_dark_theme_opposite_value`.
+# If you decide to comment the line, uncomment `m-restart-waybar` in `m-theme-wallpaper`
+gsettings set org.gnome.desktop.interface color-scheme "$prefer_dark_theme_opposite_value"
+gsettings set org.gnome.desktop.interface color-scheme "$prefer_dark_theme_value"
+
+# -----------------------------------------------------
+# Update Pywalfox
+# -----------------------------------------------------
+
+if type pywalfox >/dev/null 2>&1; then
+    pywalfox update
+fi
+
+# -----------------------------------------------------
+# Update SwayNC
+# -----------------------------------------------------
+
+sleep 0.1
+m-theme-set-swaync
+
+# -----------------------------------------------------
+# Created blurred wallpaper
+# -----------------------------------------------------
+
+if [ -f "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png" ] && [ "$force_generate" == "0" ] && [ "$use_cache" == "1" ]; then
+    m-log "Use cached wallpaper blur-$blur-$effect-$wallpaperfilename"
+else
+    m-log "Generate new cached wallpaper blur-$blur-$effect-$wallpaperfilename with blur $blur"
+    # notify-send --replace-id=1 "Generate new blurred version" "with blur $blur" -h int:value:66
+    magick "$used_wallpaper" -resize 75% "$blurredwallpaper"
+    m-log "Resized to 75%"
+    if [ ! "$blur" == "0x0" ]; then
+        magick "$blurredwallpaper" -blur "$blur" "$blurredwallpaper"
+        cp "$blurredwallpaper" "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png"
+        m-log "Blurred"
+    fi
+fi
+cp "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png" "$blurredwallpaper"
+
+# -----------------------------------------------------
+# Create rasi file
+# -----------------------------------------------------
+
+if [ ! -f "$rasifile" ]; then
+    touch "$rasifile"
+fi
+echo "* { current-image: url(\"$blurredwallpaper\", height); }" >"$rasifile"
+
+# -----------------------------------------------------
+# Created square wallpaper
+# -----------------------------------------------------
+
+m-log "Generate new cached wallpaper square-$wallpaperfilename"
+magick "$tmpwallpaper" -gravity Center -extent 1:1 "$squarewallpaper"
+cp "$squarewallpaper" "$generatedversions/square-$wallpaperfilename.png"
+
+# -----------------------------------------------------
+# Restart auth polkit (needed so it can have new theme)
+# -----------------------------------------------------
+
+m-restart-app /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

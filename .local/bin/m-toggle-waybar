@@ -7,9 +7,12 @@
 #            |___/ |___/                         |___/
 #
 
-if [ -f $HOME/.config/mimic/settings/waybar-disabled ]; then
-    rm $HOME/.config/mimic/settings/waybar-disabled
+settings_dir="${XDG_CONFIG_HOME:-$HOME/.config}/mimic/settings"
+
+if [ -f "$settings_dir/waybar-disabled" ]; then
+    rm "$settings_dir/waybar-disabled"
 else
-    touch $HOME/.config/mimic/settings/waybar-disabled
+    touch "$settings_dir/waybar-disabled"
 fi
-$HOME/.config/waybar/launch.sh &
+
+m-restart-waybar

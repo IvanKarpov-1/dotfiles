@@ -14,11 +14,11 @@
 # Set defaults
 # -----------------------------------------------------
 
-mimic_cache_folder="$HOME/.cache/mimic/hyprland-dotfiles"
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-defaultwallpaper="$HOME/.config/mimic/wallpapers/default.jpg"
-
-cachefile="$mimic_cache_folder/current_wallpaper"
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/mimic/hyprland-dotfiles"
+cachefile="$cache_dir/current_wallpaper"
+defaultwallpaper="$config_dir/mimic/wallpapers/default.jpg"
 
 # -----------------------------------------------------
 # Get current wallpaper
@@ -26,24 +26,21 @@ cachefile="$mimic_cache_folder/current_wallpaper"
 
 if [ -f "$cachefile" ]; then
     sed -i "s|~|$HOME|g" "$cachefile"
-    wallpaper=$(cat $cachefile)
-    if [ -f $wallpaper ]; then
-        echo ":: Wallpaper $wallpaper exists"
+    wallpaper=$(cat "$cachefile")
+    if [ -f "$wallpaper" ]; then
+        m-log "Wallpaper $wallpaper exists"
     else
-        echo ":: Wallpaper $wallpaper does not exist. Using default."
-        wallpaper=$defaultwallpaper
+        m-log "Wallpaper $wallpaper does not exist. Using default."
+        wallpaper="$defaultwallpaper"
     fi
 else
-    echo ":: $cachefile does not exist. Using default wallpaper."
-    wallpaper=$defaultwallpaper
+    m-log "$cachefile does not exist. Using default wallpaper."
+    wallpaper="$defaultwallpaper"
 fi
 
 # -----------------------------------------------------
 # Set wallpaper
 # -----------------------------------------------------
 
-echo ":: Setting wallpaper with source image $wallpaper"
-if [ -f ~/.local/bin/waypaper ]; then
-    export PATH=$PATH:~/.local/bin/
-fi
+m-log "Setting wallpaper with source image $wallpaper"
 waypaper --wallpaper "$wallpaper"
