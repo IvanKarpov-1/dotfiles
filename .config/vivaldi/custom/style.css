@@ -24,6 +24,6 @@
 }
 
 #browser .tab.active {
-    background-color: var(--colorAccentBgFadedMost) !important;
+    background-color: var(--colorAccentBgDark) !important;
     color: var(--colorAccentFg) !important;
 }

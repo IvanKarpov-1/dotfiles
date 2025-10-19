@@ -48,6 +48,7 @@
     "rewrite": {
       "(.*) - Brave": "$1",
       "(.*) - Chromium": "$1",
+      "(.*) - Vivaldi": "$1",
       "(.*) - Brave Search": "$1",
       "(.*) - Outlook": "$1",
       "(.*) Microsoft Teams": "$1"
@@ -56,15 +57,21 @@
   },
   // Empty
   "custom/empty": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": ""
   },
   // Tools
   "custom/tools": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "",
     "tooltip-format": "Tools"
   },
   // Cliphist
   "custom/cliphist": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "",
     "on-click": "sleep 0.1 && ~/.config/mimic/scripts/cliphist.sh",
     "on-click-right": "sleep 0.1 && ~/.config/mimic/scripts/cliphist.sh d",
@@ -73,18 +80,18 @@
   },
   // Updates Count
   "custom/updates": {
-      "format": "   {}",
+      "format": " {}",
       "escape": true,
       "return-type": "json",
-      "exec": "~/.config/mimic/scripts/updates.sh",
+      "exec": "m-system-updates-get",
       "restart-interval": 60,
-      "on-click": "$(cat ~/.config/mimic/settings/terminal.sh) --class dotfiles-floating -e ~/.config/mimic/scripts/installupdates.sh",
+      "on-click": "$(cat ~/.config/mimic/settings/terminal.sh) --class dotfiles-floating -e m-system-updates-install",
       "on-click-right": "~/.config/mimic/settings/software.sh"
   },
   // Wallpaper
   "custom/wallpaper": {
     "format": "",
-    "on-click": "bash -c waypaper &",
+    "on-click": "m-launch-waypaper",
     "tooltip-format": "Select a wallpaper"
   },
   // Keybindings
@@ -104,21 +111,21 @@
     // START APPS LABEL
     "format": "Apps",
     // END APPS LABEL
-    "on-click": "sleep 0.2;pkill rofi || rofi -show drun -replace",
+    "on-click": "m-menu apps",
     "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
   // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
-    "on-click": "sleep 0.2;rofi -show drun -replace",
+    "on-click": "m-menu apps",
     "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
     "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
   // Power Menu
   "custom/exit": {
     "format": "",
-    "on-click": "~/.config/mimic/scripts/wlogout.sh",
+    "on-click": "m-session-menu",
     "on-click-right": "hyprlock",
     "tooltip-format": "Left: Power menu\nRight: Lock screen"
   },
@@ -145,6 +152,8 @@
   },
   // Hypridle inhibitor
   "custom/hypridle": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "",
     "return-type": "json",
     "escape": true,
@@ -178,21 +187,29 @@
   },
   // System
   "custom/system": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "",
     "tooltip": false
   },
   // CPU
   "cpu": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "/ C {usage}% ",
     "on-click": "~/.config/mimic/settings/system-monitor.sh"
   },
   // Memory
   "memory": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "/ M {}% ",
     "on-click": "~/.config/mimic/settings/system-monitor.sh"
   },
   // Harddisc space used
   "disk": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "interval": 30,
     "format": "D {percentage_used}% ",
     "path": "/",
@@ -232,7 +249,7 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": " {signalStrength}%",
-    "format-ethernet": "  {ifname}",
+    "format-ethernet": " {ifname}",
     "format-disconnected": "Disconnected ⚠",
     "tooltip-format": " {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
@@ -251,9 +268,9 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%",
-    "format-alt": "{icon}  {time}",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [
@@ -266,6 +283,8 @@
   },
   // Power Profiles Daemon
   "power-profiles-daemon": {
+    "on-scroll-up": "true",
+    "on-scroll-down": "true",
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
@@ -280,18 +299,18 @@
   "pulseaudio#output": {
     // "scroll-step": 1, // %, can be a float
     "format": "{icon} {volume}%",
-    "format-muted": " ",
+    "format-muted": "",
     "format-bluetooth-muted": "{icon}",
     "format-bluetooth": "{icon} {volume}%",
     // "format-source": "{volume}% ",
     // "format-source-muted": "",
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
-      "phone": " ",
-      "portable": " ",
-      "car": " ",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
       "default": [
         "",
         "",
@@ -343,8 +362,8 @@
     "scroll-step": 1
   },
   "mpris": {
-    "format": "{player_icon}  {dynamic}",
-    "format-paused": "{status_icon}  <i>{dynamic}</i>",
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
     "player-icons": {
       "default": "▶",
       "mpv": "🎵"
@@ -377,7 +396,9 @@
     "format": "{}",
     "format-en": "en",
     "format-uk": "ua",
-    "on-click": "~/.config/hypr/scripts/toggle-keyboard-layout.sh",
+    "on-click": "m-keyboard-layout-switch",
+    "on-scroll-up": "m-keyboard-layout-switch",
+    "on-scroll-down": "m-keyboard-layout-switch",
     //"keyboard-name": "at-translated-set-2-keyboard"
   }
 }
