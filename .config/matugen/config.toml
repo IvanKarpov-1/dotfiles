@@ -77,3 +77,7 @@ output_path = '~/.config/mimic/colors/onsurface'
 [templates.vivaldi]
 input_path = '~/.config/matugen/templates/vivaldi-colors.css'
 output_path = '~/.config/vivaldi/custom/vivaldi-colors.css'
+
+[templates.sddm]
+input_path = '~/.config/matugen/templates/sddm-matugen.conf'
+output_path = '~/.config/sddm/sddm-matugen.conf'

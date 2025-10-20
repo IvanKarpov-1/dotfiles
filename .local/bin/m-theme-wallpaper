@@ -201,3 +201,9 @@ cp "$squarewallpaper" "$generatedversions/square-$wallpaperfilename.png"
 # -----------------------------------------------------
 
 m-restart-app /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# -----------------------------------------------------
+# Update SDDM
+# -----------------------------------------------------
+
+m-theme-set-sddm

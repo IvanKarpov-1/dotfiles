@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/mimic/hyprland-dotfiles"
+
+sudo /usr/bin/cp -f "${config_dir}/sddm/sddm-matugen.conf" /usr/share/sddm/themes/silent/configs/sddm-matugen.conf
+sudo /usr/bin/cp -f "${cache_dir}/blurred_wallpaper.png" /usr/share/sddm/themes/silent/backgrounds/blurred_wallpaper.png
