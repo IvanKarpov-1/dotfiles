@@ -8,8 +8,8 @@
         - [If on a single-boot system](#1-if-on-a-single-boot-system)
         - [If on a multi-boot system](#2-if-on-a-multi-boot-system)
     - [Create an encrypted filesystem](#create-an-encrypted-filesystem)
-    - [Create and Mount btrfs Subvolumes](#create-and-mount-btrfs-subvolumes)
-    - [Create a Btrfs swapfile and remount subvols](#create-a-btrfs-swapfile-and-remount-subvols)
+    - [Create and Mount Btrfs Subvolumes](#create-and-mount-btrfs-subvolumes)
+    - [Create a Btrfs swapfile and remount Subvolums](#create-a-btrfs-swapfile-and-remount-subvolums)
     - [Network](#network)
     - [Install the system using pacstrap](#install-the-system-using-pacstrap)
     - [Configure the system](#configure-the-system)
@@ -32,8 +32,10 @@
     - [NVIDIA](#nvidia)
 - [Install Desktop Environment (Hyprland)](#install-desktop-environment-hyprland)
     - [Fixing Audio on Linux](#fixing-audio-on-linux)
-    - [Install required packages](#install-required-packages)
+    - [Install packages](#install-packages)
     - [My dotfiles](#my-dotfiles)
+    - [Additional setup](#additional-setup)
+        - [SDDM theme](#sddm-theme)
 - [Miscellaneous](#miscellaneous)
     - [Arch wiki in your terminal (without the Internet)](#arch-wiki-in-your-terminal-without-the-internet)
 
@@ -114,7 +116,7 @@ cryptsetup open /dev/nvme0n1pN luks
 ```
 
 
-## Create and Mount btrfs Subvolumes
+## Create and Mount Btrfs Subvolumes
 
 > [!IMPORTANT]
 > If you encrypted your filesystem, replace all occurrences of `/dev/nvme0n1pN` with `/dev/mapper/luks`.
@@ -139,7 +141,7 @@ btrfs sub create /mnt/@snapshots
 btrfs sub create /mnt/@swap
 ```
 
-## Create a Btrfs swapfile and remount subvols
+## Create a Btrfs swapfile and remount Subvolums
 
 ```
 truncate -s 0 /mnt/@swap/swapfile
@@ -656,6 +658,16 @@ systemctl enable nvidia-suspend.service nvidia-hibernate.service nvidia-resume.s
 systemctl enable --now nvidia-powerd
 ```
 
+Create file `/etc/modprobe.d/nvidia.conf` and paste next:
+```
+options nvidia_drm modeset=1
+```
+
+Edit `/etc/mkinitcpio.conf` to add NVIDIA modules:
+```
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+```
+
 Then, `reboot`.
 
 After a reboot, you should see the GPU turning on when needed and off when it's not needed anymore.
@@ -703,7 +715,7 @@ sudo systemctl start bluetooth.service
 ```
 
 
-## Install required packages
+## Install packages
 
 Install `hyprland`:
 ```
@@ -719,16 +731,23 @@ sudo pacman -S hyprpolkitagent noto-fonts noto-fonts-cjk noto-fonts-emoji \
 
 Install other packages:
 ```
-sudo pacman -S brightnessctl cliphist ffmpeg figlet flatpak grim \
-    hypridle hyprlock hyprpaper hyprpicker imagemagick inotify-tools \
-    kitty libnotify loupe meson nm-connection-editor \
-    network-manager-applet nwg-look nwg-displays playerctl python-pip \
-    rofi sddm slurp thunar tumbler vivaldi vlc waybar \
+sudo pacman -S adw-gtk-theme brightnessctl cliphist ffmpeg figlet \
+    flatpak grim hypridle hyprlock hyprpaper hyprpicker imagemagick \
+    ttf-jetbrains-mono notify-tools kitty kvantum kvantum-qt5 libnotify \
+    loupe meson nm-connection-editor network-manager-applet nwg-look \
+    nwg-displays papirus-icon-theme playerctl python-pip qbittorrent \
+    qt5ct qt6ct rofi sddm slurp thunar tumbler vivaldi vlc waybar \
     wl-clipboard xclip xdg-user-dirs
 ```
 ```
-yay -S matugen-bin sddm-silent-theme spotify telegram-desktop-bin \
-    visual-studio-code-bin waypaper wlogout
+yay -S matugen-bin sddm-silent-theme spotify \
+    telegram-desktop-bin visual-studio-code-bin waypaper wlogout
+```
+
+```
+wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+
+wget -qO- https://git.io/papirus-folders-install | env PREFIX=$HOME/.local sh
 ```
 
 `reboot` your system.
@@ -755,6 +774,7 @@ Packages explanation
 | `swaync` | A simple notification daemon. Many apps (e.g., Discord) may freeze without one running | 🔴 |
 | `xdg-desktop-portal-gtk`<br/>`xdg-desktop-portal-hyprland` | An XDG Desktop Portal is a program that lets other applications communicate with the compositor through D-Bus. A portal implements certain functionalities, such as opening file pickers or screen sharing | 🔴 |
 | | **Other packages category (pacman)** |
+| `adw-gtk-theme` | The theme from libadwaita ported to GTK-3 | 🟡 |
 | `brightnessctl` | A program to read and control device brightness | 🟡 |
 | `cliphist` | Wayland clipboard manager with support for multimedia | 🟡 |
 | `ffmpeg` | FFmpeg is a complete, cross-platform solution to record, convert, and stream audio and video. It includes libavcodec - the leading audio/video codec library | 🔴 |
@@ -765,9 +785,11 @@ Packages explanation
 | `hyprlock` | Simple, yet fast, multi-threaded, and GPU-accelerated screen lock for Hyprland | 🟡 |
 | `hyprpaper` | Fast, IPC-controlled wallpaper utility for Hyprland | 🟡 |
 | `hyprpicker` | Neat utility for picking a color from your screen on Hyprland | 🟡 |
+| `ttf-jetbrains-mono` | JetBrains Mono – the free and open-source typeface for developers | 🟢 |
 | `imagemagick` | Free and open-source software suite for displaying, converting, and editing raster image and vector image files | 🟡 |
 | `inotify-tools` | A library and a set of command-line programs providing a simple interface to inotify | 🟡 |
 | `kitty` | Scriptable OpenGL-based terminal emulator with TrueColor, ligatures support, protocol extensions for keyboard input, and image rendering. It also offers tiling capabilities. (altrnatives: `alacritty`, `gnome-console`, `ghostty`, `tabby`<sup>From website</sup>) | 🟢 |
+| `kvantum`<br/>`kvantum-qt5` | SVG-based theme engines for Qt5 and Qt6 | 🟡 |
 | `libnotify` | Desktop-independent implementation of the Desktop Notifications Specification, which provides `notify-send` utility and support for GTK and Qt applications | 🟡 |
 | `loupe` | GNOME's default image viewer (alternatives: `qview`<sup>AUR</sup>, `gwenview`<sup>From Flatpak</sup>, `feh`) | 🟢 |
 | `meson` | Open source build system | 🟢 |
@@ -777,6 +799,8 @@ Packages explanation
 | `nwg-displays` | Output management utility for sway and Hyprland | 🟡 |
 | `playerctl` | Provides a command-line tool to send commands to MPRIS clients | 🟡 |
 | `python-pip` | The PyPA recommended tool for installing Python packages | 🟡 |
+| `qbittorrent` | Torrent client | 🟢 |
+| `qt5ct`<br/>`qt6ct` | Qt5 and Qt5 configuration utilities | 🟡 |
 | `rofi` | Window switcher, run dialog, ssh-launcher, and dmenu replacement | 🟡 |
 | `sddm` | Display manager | 🟡 |
 | `slurp` | Select a region in a Wayland compositor | 🟢 |
@@ -796,6 +820,9 @@ Packages explanation
 | `visual-studio-code-bin` | A cross-platform text editor developed by Microsoft (alternatives: `emacs`, `gedit`, `helix`, `vin`, `nvim`) | 🟢 |
 | `waypaper` | GUI wallpaper manager for Wayland and Xorg Linux systems | 🟡 |
 | `wlogout` | Logout menu for Wayland | 🟡 |
+|| **Other packages category (wget)** | |
+| `papirus-folders-git` | A script that lets you change the colors of folders in Papirus icon theme | 🟡 |
+| `papirus-icon-theme` | Papirus is a free and open source SVG icon theme for Linux | 🟡 |
 
 </details>
 
@@ -804,26 +831,78 @@ Packages explanation
 
 From now on, you can customize your system as you see fit.
 
-> [!CAUTION]
-> Next is a placeholder text. Things DO NOT work that way right now! If you want, you can manually replace your `.config` with my `.config` from the `arch-experimental` git branch.
-
-If you don't want to spend time on this, or simply don't know how to do it, or perhaps you like what [I've done](https://github.com/IvanKarpov-1/dotfiles), then you can apply my customizations.
+If you don't want to spend time on this, or simply don't know how to do it, or perhaps you like what [I've done](https://github.com/IvanKarpov-1/dotfiles/tree/arch-experimental), then you can apply my customizations.
 
 To do so, clone my dotfiles repo:
 ```
-git clone https://github.com/IvanKarpov-1/dotfiles.git "~/.mimics_dotfiles"
+git clone --recurse-submodules https://github.com/IvanKarpov-1/dotfiles.git "~/.mimics_dotfiles"
 ```
 
-Go into the newly downloaded repo and execute `install.sh`:
+Go into the newly downloaded repo and execute `install-dotfiles.sh`:
 > [!IMPORTANT]
 > Make sure you installed packages from the previous step.
 ```
+git checkout arch-experimental
+
 cd ~/.mimics_dotfiles/scripts
 
-./install.sh
+./install-dotfiles.sh
 ```
 
-Done! Now you have a fully configured Hyprland environment. Make sure to tweak it to your liking, as you are not me, and might like things differently.
+Done! Now you have a fully configured (almost) Hyprland environment. Make sure to tweak it to your liking, as you are not me, and might like things differently.
+
+
+## Additional setup
+
+### SDDM theme
+
+Previously, we installed the SilentSDDM theme for the SDDM.
+
+To properly configure it, edit `/etc/sddm.conf`:
+```
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+
+[Theme]
+Current=silent
+```
+
+Initially, SilentSDDM will not follow the system color scheme (scheme generated by `matugen` on wallpaper change) and will not have your wallpaper.
+
+The script `m-theme-set-sddm` tries to copy the generated theme file and background from the user's home directory to the `/usr/share/sddm/themes/silent/` directory. For it, it requires `sudo` privileges. Which is fine if you run the script yourself and enter the password. But when it executes in the theme-changing pipeline, you don't have the ability to enter the password. So we need to allow executing script commands without the password.
+
+To make it happen, you need to add the sudoers policy. Edit `/etc/sudoers.d/sddm-theme`:
+```
+sudo visudo -f /etc/sudoers.d/sddm-theme
+```
+
+> [!CAUTION]
+> ALWAYS make changes to the sudoers files using `visudo`, as it ensures the correctness of those changes.
+
+> [!NOTE]
+> If you have this error
+> ```
+> visudo: no editor found (editor path = /usr/bin/vi)
+> ```
+> Run the command as follows:
+> ```
+> sudo EDITOR=/usr/bin/nvim visudo -f /etc/sudoers.d/sddm-theme
+> ```
+> You may replace `nvim` with your editor of choice.
+
+And add next (replacing `{YOUR_USER_NAME}` with your user name):
+```
+{YOUR_USER_NAME} ALL = (root) NOPASSWD: /usr/bin/cp -f /home/{YOUR_USER_NAME}/.config/sddm/sddm-matugen.conf /usr/share/sddm/themes/silent/configs/sddm-matugen.conf
+
+{YOUR_USER_NAME} ALL = (root) NOPASSWD: /usr/bin/cp -f /home/{YOUR_USER_NAME}/.cache/mimic/hyprland-dotfiles/blurred_wallpaper.png /usr/share/sddm/themes/silent/backgrounds/blurred_wallpaper.png
+```
+
+Then, in `/usr/share/sddm/themes/silent/metadata.desktop` comment (by placing `;` in front) default theme and add the generated one:
+```
+ConfigFile=configs/sddm-matugen.conf
+; ConfigFile=configs/default.conf
+```
 
 
 # Miscellaneous
