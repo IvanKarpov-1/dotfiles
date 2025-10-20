@@ -1,2 +1,3 @@
 .config/vivaldi/*
 !.config/vivaldi/custom
+!.config/vivaldi/custom/**
