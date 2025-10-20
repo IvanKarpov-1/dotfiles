@@ -85,18 +85,44 @@ echo "$wallpaper" > "$cachefile"
 m-log "Path of current wallpaper copied to $cachefile"
 
 # -----------------------------------------------------
-# Get wallpaper filename
+# Get wallpaper filename and theme variant
 # -----------------------------------------------------
 
 wallpaperfilename=$(basename "$wallpaper")
+variant=$(basename "$(dirname "$wallpaper")")
+
 m-log "Wallpaper Filename: $wallpaperfilename"
 
+if [[ "${variant}" == "dark" || "${variant}" == "light" ]]; then
+    m-log "Theme variant: $variant"
+else
+    variant=""
+fi
+
 # -----------------------------------------------------
-# Detect Theme
+# Detect theme if variand is not set
 # -----------------------------------------------------
 
 SETTINGS_FILE="$config_dir/gtk-3.0/settings.ini"
-THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | awk -F'=' '{print $2}')
+
+if [[ -n "${variant}" ]]; then
+    value=$([ "$variant" = "dark" ] && echo 1 || echo 0)
+
+    m-listeners --stop gtk-theme-switcher
+
+    if grep -q '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE"; then
+        sed -i "s/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=$value/" "$SETTINGS_FILE"
+    else
+        echo "gtk-application-prefer-dark-theme=$value" >> "$SETTINGS_FILE"
+    fi
+
+    m-listeners --start gtk-theme-switcher
+
+    THEME_PREF=$value
+else
+    THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | awk -F'=' '{print $2}')
+fi
+
 
 # -----------------------------------------------------
 # Execute matugen
