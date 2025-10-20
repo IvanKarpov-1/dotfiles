@@ -16,9 +16,9 @@ THEME_PREF=$(grep -E '^gtk-application-prefer-dark-theme=' "$SETTINGS_FILE" | aw
 config="$config_dir/kitty";
 
 if [ "$THEME_PREF" -eq 1 ]; then
-    cat "$config/themes/colors-dark.conf" >> "$config/themes/colors-matugen.conf"
+    cat "$config/themes/colors-dark.conf" >> "$config/themes/matugen.conf"
 else
-    cat "$config/themes/colors-light.conf" >> "$config/themes/colors-matugen.conf"
+    cat "$config/themes/colors-light.conf" >> "$config/themes/matugen.conf"
 fi
 
-kitty +kitten themes --reload-in=all colors-matugen
+kitty +kitten themes --reload-in=all matugen

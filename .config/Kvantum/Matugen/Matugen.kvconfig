@@ -57,25 +57,25 @@ tooltip_delay=-1
 tree_branch_line=true
 
 [GeneralColors]
-window.color=#f8f9ff
-base.color=#f8f9ff
-alt.base.color=#eef0ff
-button.color=#f8f9ff
+window.color=#f8fbf0
+base.color=#f8fbf0
+alt.base.color=#f4f9e8
+button.color=#f8fbf0
 light.color=#ffffff
-mid.light.color=#ffffff
-dark.color=#d9dfff
-mid.color=#e9ecff
-highlight.color=#36618ee2
-inactive.highlight.color=#36618ee2
-tooltip.base.color=#191c20
-text.color=#191c20
-window.text.color=#191c20
-button.text.color=#191c20
-disabled.text.color=#e1e2e8
-tooltip.text.color=#f8f9ff
+mid.light.color=#fefefc
+dark.color=#edf5d8
+mid.color=#f2f8e4
+highlight.color=#416835e2
+inactive.highlight.color=#416835e2
+tooltip.base.color=#191d17
+text.color=#191d17
+window.text.color=#191d17
+button.text.color=#191d17
+disabled.text.color=#e1e4da
+tooltip.text.color=#f8fbf0
 highlight.text.color=#ffffff
-link.color=#36618e
-link.visited.color=#5b4a66
+link.color=#416835
+link.visited.color=#2d5254
 progress.indicator.text.color=#ffffff
 
 [Hacks]
@@ -105,8 +105,8 @@ frame.right=3
 interior=true
 interior.element=button
 indicator.size=9
-text.normal.color=#191c20c8
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
 text.press.color=#ffffff
 text.toggle.color=#ffffff
 text.shadow=0
@@ -132,14 +132,14 @@ frame.top=1
 frame.bottom=1
 frame.left=1
 frame.right=1
-text.normal.color=#191c20c8
+text.normal.color=#191d17c8
 
 [DockTitle]
 inherits=PanelButtonCommand
 frame=false
 interior=false
-text.normal.color#191c2096
-text.focus.color=#191c20
+text.normal.color#191d1796
+text.focus.color=#191d17
 text.bold=true
 
 [IndicatorSpinBox]
@@ -149,21 +149,21 @@ interior=true
 frame.left=1
 indicator.element=spin
 indicator.size=10
-text.normal.color=#191c20c8
+text.normal.color=#191d17c8
 
 [RadioButton]
 inherits=PanelButtonCommand
 frame=false
 interior.element=radio
-text.normal.color=#191c20c8
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
 
 [CheckBox]
 inherits=PanelButtonCommand
 frame=false
 interior.element=checkbox
-text.normal.color=#191c20c8
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
 
 [Focus]
 inherits=PanelButtonCommand
@@ -203,9 +203,9 @@ indicator.size=9
 
 [ToolboxTab]
 inherits=PanelButtonCommand
-text.normal.color=#191c20c8
-text.press.color=#191c2096
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.press.color=#191d1796
+text.focus.color=#191d17
 
 [Tab]
 inherits=PanelButtonCommand
@@ -220,9 +220,9 @@ frame.top=4
 frame.bottom=4
 frame.left=4
 frame.right=4
-text.normal.color=#191c207d
-text.focus.color=#191c20b4
-text.toggle.color=#191c20c8
+text.normal.color=#191d177d
+text.focus.color=#191d17b4
+text.toggle.color=#191d17c8
 frame.expansion=0
 
 [TabFrame]
@@ -248,9 +248,9 @@ frame.bottom=3
 frame.left=1
 frame.right=1
 text.bold=true
-text.normal.color=#191c2096
-text.focus.color=#36618e
-text.toggle.color=#191c20
+text.normal.color=#191d1796
+text.focus.color=#416835
+text.toggle.color=#191d17
 indicator.element=harrow
 frame.expansion=0
 
@@ -265,8 +265,8 @@ text.margin=0
 frame=false
 interior.element=menubar
 frame.element=menubar
-text.normal.color=#191c20c8
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
 frame.bottom=0
 frame.expansion=0
 
@@ -289,10 +289,10 @@ inherits=PanelButtonCommand
 frame.element=progress
 interior.element=progress
 text.margin=0
-text.normal.color=#191c20c8
-text.focus.color=#191c20
-text.press.color=#191c20
-text.toggle.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
+text.press.color=#191d17
+text.toggle.color=#191d17
 text.bold=false
 frame.expansion=8
 
@@ -315,8 +315,8 @@ text.margin.top=2
 text.margin.bottom=2
 text.margin.left=4
 text.margin.right=4
-text.normal.color=#191c20c8
-text.focus.color=#191c20
+text.normal.color=#191d17c8
+text.focus.color=#191d17
 text.press.color=#ffffff
 text.toggle.color=#ffffff
 frame.expansion=0
@@ -352,7 +352,7 @@ frame=true
 frame.element=menuitem
 interior.element=menuitem
 indicator.element=menuitem
-text.normal.color=#191c20c8
+text.normal.color=#191d17c8
 text.focus.color=#ffffff
 text.margin.top=1
 text.margin.bottom=1
@@ -384,7 +384,7 @@ text.margin.left=4
 text.margin.right=4
 text.margin.top=0
 text.margin.bottom=0
-text.normal.color=#191c20b4
+text.normal.color=#191d17b4
 text.focus.color=#ffffff
 frame.expansion=0
 
@@ -394,8 +394,8 @@ frame=false
 interior.element=titlebar
 indicator.size=12
 indicator.element=mdi
-text.normal.color=#73777f
-text.focus.color=#191c20
+text.normal.color=#73796e
+text.focus.color=#191d17
 text.bold=true
 text.italic=true
 frame.expansion=0
@@ -404,7 +404,7 @@ frame.expansion=0
 inherits=PanelButtonCommand
 interior.element=combo
 frame.element=combo
-text.press.color=#191c20c8
+text.press.color=#191d17c8
 indicator.element=carrow
 
 [Menu]
@@ -415,7 +415,7 @@ frame.left=1
 frame.right=1
 frame.element=menu
 interior.element=menu
-text.normal.color=#191c20c8
+text.normal.color=#191d17c8
 text.shadow=false
 frame.expansion=0
 
@@ -424,8 +424,8 @@ inherits=GenericFrame
 frame=false
 text.shadow=0
 text.margin=0
-text.normal.color=#191c2096
-text.focus.color=#191c20
+text.normal.color=#191d1796
+text.focus.color=#191d17
 text.bold=true
 frame.expansion=0
 

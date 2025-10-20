@@ -1,4 +1,4 @@
-@import "vivaldi-colors.css";
+@import "colors.css";
 
 .color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred header,
 .color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred footer,
