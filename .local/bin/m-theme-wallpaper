@@ -130,14 +130,18 @@ fi
 
 m-log "Execute matugen with $used_wallpaper"
 if [ "$THEME_PREF" -eq 1 ]; then
+    wallust run "$used_wallpaper" --backend fastresize --colorspace lab --palette dark16 --saturation 20 --check-contrast
     matugen image "$used_wallpaper" -m "dark"
     prefer_dark_theme_value="prefer-dark"
     prefer_dark_theme_opposite_value="prefer-light"
 else
+    wallust run "$used_wallpaper" --backend fastresize --colorspace lab --palette light16 --saturation 90 --check-contrast
     matugen image "$used_wallpaper" -m "light"
     prefer_dark_theme_value="prefer-light"
     prefer_dark_theme_opposite_value="prefer-dark"
 fi
+
+sleep 0.1
 
 # -----------------------------------------------------
 # Update GTK settings
@@ -161,6 +165,8 @@ m-theme-set-kitty
 # -----------------------------------------------------
 # Update folders
 # -----------------------------------------------------
+
+sleep 0.1
 
 color=$(<"$config_dir/mimic/colors/primary")
 m-theme-set-folder-icons "$color"

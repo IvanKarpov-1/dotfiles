@@ -27,6 +27,6 @@ cursor_trail                0
 
 
 # BEGIN_KITTY_THEME
-# Colors-Matugen
+# Matugen
 include current-theme.conf
 # END_KITTY_THEME
