@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+settings_dir="${XDG_CONFIG_HOME:-$HOME/.config}/mimic/settings"
+NOTIFY_EXPIRE=5000 # milliseconds
+
+if [ -n "$settings_dir/screenshot-directory.sh" ]; then
+  source "$settings_dir/screenshot-directory.sh"
+else
+  screenshot_directory="$HOME/Pictures/Screenshots"
+fi
+
+# Choose mode (window, monitor, or region)
+MODE=""
+case "$1" in
+window) MODE="window" ;;
+monitor) MODE="output" ;;
+region) MODE="region" ;;
+*)
+  exit 0
+  ;;
+esac
+
+# Take the screenshot
+TIMESTAMP=$(date +'%Y-%m-%d-%H%M%S')
+FILE_NAME="${TIMESTAMP}.png"
+hyprshot -sm "$MODE" -z -o "$screenshot_directory" -f "$FILE_NAME"
+STATUS=$?
+FILE=$screenshot_directory/$FILE_NAME
+
+# Handle exit conditions
+sleep 0.1
+if [ $STATUS -ne 0 ]; then
+  # real error → show fail notification
+  notify-send "󰹑  Screenshot failed" "No file saved."
+  exit 1
+elif [ ! -f "$FILE" ]; then
+  # user cancelled (pressed Esc) → exit quietly
+  exit 0
+fi
+sleep 1
+
+# Send notification with an Open button (SwayNC supports this)
+ACTION=$(
+  notify-send -u critical -a Hyprshot "󰹑 Screenshot saved" \
+    "Image saved in ~/Pictures/Screenshots/$FILE_NAME and copied to the clipboard." \
+    --action=open_image=" Open Image" \
+    --action=open_folder=" Open Folder" \
+    --expire-time=$NOTIFY_EXPIRE \
+    --icon="$FILE"
+)
+# Wait for button press from SwayNC
+case "$ACTION" in
+open_image)
+  loupe "$FILE" &
+  disown
+  ;;
+open_folder)
+  nautilus "$FILE" &
+  disown
+  ;;
+esac

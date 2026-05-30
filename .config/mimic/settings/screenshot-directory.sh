@@ -1,0 +1,1 @@
+screenshot_directory="$HOME/Pictures/Screenshots"

@@ -6,9 +6,6 @@
 #                                 /_/
 #
 
-config_dir="${XDG_CONFIG_HOME:-$HOME/.config}"
-settings_dir="${XDG_CONFIG_HOME:-$HOME/.config}/mimic/settings"
-
 # Check if command exists
 _checkCommandExists() {
     cmd="$1"
@@ -48,16 +45,16 @@ sleep 1
 clear
 figlet -f smslant "Updates"
 echo
-primarycolor=$(cat "$config_dir/mimic/colors/primary")
-onsurfacecolor=$(cat "$config_dir/mimic/colors/onsurface")
+primarycolor=$(cat ~/.config/mimic/colors/primary)
+onsurfacecolor=$(cat ~/.config/mimic/colors/onsurface)
 if gum confirm --selected.background=$primarycolor --prompt.foreground=$onsurfacecolor "DO YOU WANT TO START THE UPDATE NOW?"; then
     echo
-    m-log ":: Update started..."
+    echo ":: Update started..."
 elif [ $? -eq 130 ]; then
     exit 130
 else
     echo
-    m-log ":: Update canceled."
+    echo ":: Update canceled."
     exit
 fi
 
@@ -74,20 +71,20 @@ if [[ $(_checkCommandExists "pacman") == 0 ]]; then
 elif [[ $(_checkCommandExists "dnf") == 0 ]]; then
     sudo dnf upgrade
 else
-    m-log "ERROR - Platform not supported"
-    m-log "Press [ENTER] to close."
+    echo ":: ERROR - Platform not supported"
+    echo "Press [ENTER] to close."
     read
 fi
 echo
 
 # Flatpak
-m-log "Searching for Flatpak updates..."
+echo ":: Searching for Flatpak updates..."
 flatpak update
 echo
 
 # Reload Waybar
-m-restart-waybar &
+pkill -RTMIN+1 waybar
 
 # Finishing
-m-log "Update complete! Press [ENTER] to close."
+echo ":: Update complete! Press [ENTER] to close."
 read

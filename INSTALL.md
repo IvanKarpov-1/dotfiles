@@ -740,8 +740,8 @@ sudo pacman -S adw-gtk-theme brightnessctl cliphist ffmpeg figlet \
     wl-clipboard xclip xdg-user-dirs
 ```
 ```
-yay -S matugen-bin sddm-silent-theme spotify \
-    telegram-desktop-bin visual-studio-code-bin waypaper wlogout
+yay -S hyprshot matugen-bin sddm-silent-theme spotify \
+    telegram-desktop-bin visual-studio-code-bin wallust waypaper wlogout
 ```
 
 ```
@@ -813,11 +813,13 @@ Packages explanation
 | `xclip` | A lightweight, command-line-based interface to the clipboard | 🟡 |
 | `xdg-user-dirs` | A tool to help manage "well-known" user directories like the desktop folder and the music folder. It also handles localization (i.e., translation) of the filenames | 🟢 |
 | | **Other packages category (yay)** |
+| `hyprshot` | A wrapper around `grim` and `slurp` to take screenshots | 🟡 |
 | `matugen-bin` | A material you color generation tool | 🟡 |
 | `sddm-silent-theme` | A very customizable SDDM theme | 🟢 |
 | `spotify` | A digital music streaming service (alternatives: `spotube-bin` (AUR), `audius`<sup>From website</sup>, `muffon`<sup>From website</sup>) | 🟢 |
 | `telegram-desktop-bin` | A cloud-based cross-platform instant messaging service with optional end-to-end encryption (alternatives: `element-desktop`, `viber`<sup>From website</sup>) | 🟢 |
 | `visual-studio-code-bin` | A cross-platform text editor developed by Microsoft (alternatives: `emacs`, `gedit`, `helix`, `vin`, `nvim`) | 🟢 |
+| `wallust` | A command line tool for creating 16 color palettes | 🟡 |
 | `waypaper` | GUI wallpaper manager for Wayland and Xorg Linux systems | 🟡 |
 | `wlogout` | Logout menu for Wayland | 🟡 |
 || **Other packages category (wget)** | |

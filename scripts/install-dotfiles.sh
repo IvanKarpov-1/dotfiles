@@ -3,6 +3,7 @@
 M_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 M_CONFIG_DIR=$( cd -- "$M_SCRIPT_DIR/../.config" &> /dev/null && pwd )
 M_LOCAL_DIR=$( cd -- "$M_SCRIPT_DIR/../.local/bin" &> /dev/null && pwd )
+M_FIRST_RUN_DIR=$( cd -- "$M_SCRIPT_DIR/first-run" &> /dev/null && pwd )
 
 echo "Using config dir: $M_CONFIG_DIR"
 echo "Using local dir:  $M_LOCAL_DIR"
@@ -35,5 +36,8 @@ echo "Linking local executables..."
 for b in "$M_LOCAL_DIR"/*; do
     ln -sfn "$b" "$local_bin/$(basename "$b")"
 done
+
+echo "Executing first run scripts..."
+bash "$M_FIRST_RUN_DIR/battery-monitor.sh"
 
 echo "All done!"

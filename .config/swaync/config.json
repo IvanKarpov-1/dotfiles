@@ -5,14 +5,14 @@
   "layer": "overlay",
   "cssPriority": "user",
 
-  "control-center-width": 360,
+  "control-center-width": 500,
   "control-center-height": 560,
   "control-center-margin-top": 13,
   "control-center-margin-bottom": 13,
   "control-center-margin-right": 14,
   "control-center-margin-left": 0,
 
-  "notification-window-width": 300,
+  "notification-window-width": 500,
   "notification-icon-size": 24,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
@@ -30,14 +30,16 @@
   "script-fail-notify": true,
   "scripts": {},
   "notification-visibility": {
-    "example-name": {
+    "Spotify": {
       "state": "muted",
-      "urgency": "Normal",
-      "app-name": "Spotify"
+      "urgency": "Low",
+      "app-name": "Spotify",
+      "desktop-entry": "spotify.desktop"
     }
   },
   "widgets": [
     "dnd",
+    "inhibitors",
     "buttons-grid",
     "backlight",
     "volume",
@@ -46,23 +48,34 @@
     "notifications"
   ],
   "widget-config": {
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
     "dnd": {
       "text": "Do not Disturb"
     },
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
-      "button-text": "Clear"
+      "button-text": " Clear All"
     },
     "mpris": {
-      "image-size": 0,
-      "image-radius": 0
+      "blacklist": ["playerctld"],
+      "autohide": true,
+      "show-album-art": "always",
+      "loop-carousel": false
     },
     "backlight": {
-      "label": "󰃟"
+      "label": "󰃟",
+      "device": "amdgpu_bl2",
+      "min": 5
     },
     "volume": {
-      "label": ""
+      "label": "",
+      "show-per-app": true,
+      "show-per-app-icon": true
     },
     "buttons-grid": {
       "actions": [

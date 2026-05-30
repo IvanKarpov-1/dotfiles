@@ -39,7 +39,7 @@ show_apps() {
 }
 
 show_session_menu() {
-    case $(menu "System" "  Lock\n󱄄  Log out\n󰤄  Suspend\n󰜉  Restart\n󰐥  Shutdown\n  Back" "-no-show-icons") in
+    case $(menu "System" " Lock\n󱄄 Log out\n󰤄 Suspend\n󰜉 Restart\n󰐥 Shutdown\n Back" "-no-show-icons") in
         *Lock*) m-sessionctl lock ;;
         *"Log out"*) m-sessionctl exit ;;
         *Suspend*) m-sessionctl suspend ;;
@@ -50,14 +50,25 @@ show_session_menu() {
     esac
 }
 
+show_screenshot_menu() {
+    case $(menu "System" " Window\n󰍹 Monitor\n Region\n Back" "-no-show-icons") in
+        *Window*) m-screenshot window ;;
+        *Monitor*) m-screenshot monitor ;;
+        *Region*) m-screenshot region ;;
+        *Back*) back_to show_main_menu ;;
+        *) back_to show_main_menu ;;
+    esac
+}
+
 show_main_menu() {
-    go_to_menu "$(menu "Go" "  Apps\n  Session\n󱎘  Close menu" "-no-show-icons")"
+    go_to_menu "$(menu "Go" " Apps\n Session\n󱎘 Close menu\n󱣵 Screenshot" "-no-show-icons")"
 }
 
 go_to_menu() {
     case "${1,,}" in
         *apps*) show_apps;;
         *session*) show_session_menu;;
+        *screenshot*) show_screenshot_menu;;
         *close*) exit 0;;
     esac
 }

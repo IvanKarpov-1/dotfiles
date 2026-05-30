@@ -181,9 +181,9 @@ gsettings set org.gnome.desktop.interface color-scheme "$prefer_dark_theme_value
 # Update Pywalfox
 # -----------------------------------------------------
 
-if type pywalfox >/dev/null 2>&1; then
-    pywalfox update
-fi
+# if type pywalfox >/dev/null 2>&1; then
+#     pywalfox update
+# fi
 
 # -----------------------------------------------------
 # Update SwayNC

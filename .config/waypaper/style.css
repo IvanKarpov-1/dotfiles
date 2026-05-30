@@ -1,11 +1,11 @@
 @import "/home/ivankarpov/.config/waypaper/colors.css";
 
 window {
-    background-color: @blur_background5;
+    /* background-color: @blur_background5; */
 }
 
 .background {
-    background-color: @blur_background5;
+    /* background-color: @blur_background5; */
 }
 /* 
 button.text-button {
@@ -24,11 +24,11 @@ button:hover>image {
 }
 
 .highlighted-button {
-    background-image: none;
+    /* background-image: none;
     box-shadow: none;
-    background-color: @primary_container;
+    background-color: @primary_container; */
 }
 
 .highlighted-button>image, .highlighted-button:hover>image {
-    -gtk-icon-effect: highlight;
+    /* -gtk-icon-effect: highlight; */
 }
